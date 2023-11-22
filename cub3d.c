@@ -12,12 +12,43 @@
 
 #include "cub3d.h"
 
+int	ft_check_file(char *argv)
+{
+	char	*s;
+	int		i;
+	int		j;
+
+	i = ft_strlen(argv);
+	j = 0;
+	s = ".cub";
+	if (i < 4)
+	{
+		ft_printf("Error\nIl file passato non e' un file \".cub\"");
+		return (0);
+	}
+	while (argv[i - 4 + j])
+	{
+		if (argv[i - 4 + j] != s[j])
+		{
+			ft_printf("Error\nIl file passato non e' un file \".cub\"");
+			return (0);
+		}
+		j++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		ft_printf("Wrong arguments!\n");
+		if (argc > 2)
+			ft_printf("Error!\nToo many arguments!\n");
+		else
+			ft_printf("Error!\nNot enough arguments!\n");
 		return (1);
 	}
+	if (!ft_check_file(argv[1]))
+		return (1);
 	return (0);
 }

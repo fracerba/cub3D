@@ -24,4 +24,39 @@
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 
+typedef struct s_img
+{
+	void	*img;
+	char	*path;
+	int		line;
+	int		end;
+	int		height;
+	int		lenght;
+	int		bits;
+}	t_img;
+
+typedef struct s_rgb
+{
+    int red;
+    int green;
+    int blue;
+}   t_rgb;
+
+typedef struct s_cubed
+{
+	void	*mlx;
+	void	*window;
+	char    **map;
+	t_img   NO_wall;
+    t_img	EA_wall;
+    t_img	SO_wall;
+    t_img	WE_wall;
+	t_rgb	floor;
+	t_rgb	ceiling;
+    float   px;
+    float   py;
+    float   direction;
+    float   tangenti[/*un botto fra!*/];
+}	t_cubed;
+
 #endif
