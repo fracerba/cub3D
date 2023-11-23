@@ -15,6 +15,8 @@ NAME = cub3D.a
 OUT = cub3D
 
 SRCS = cub3d.c \
+		hooks.c \
+		utils.c \
 
 OBJS = ${SRCS:.c=.o}
 

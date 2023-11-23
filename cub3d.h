@@ -59,4 +59,14 @@ typedef struct s_cubed
     float   tangenti[/*un botto fra!*/];
 }	t_cubed;
 
+
+//cub3d.c
+int	ft_check_file(char *argv);
+int	main(int argc, char **argv);
+
+//hooks.c
+
+//utils.c
+int rgb_compare(t_rgb a, t_rgb b);
+
 #endif
