@@ -40,6 +40,9 @@ int	ft_check_file(char *argv)
 
 int	main(int argc, char **argv)
 {
+	int	fd;
+	t_cubed *cube;
+
 	if (argc != 2)
 	{
 		if (argc > 2)
@@ -50,5 +53,13 @@ int	main(int argc, char **argv)
 	}
 	if (!ft_check_file(argv[1]))
 		return (1);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("Error!\nThe file doesn't exist!\n");
+		return (1);
+	}
+	get_map(fd, &cube);
+	start_raycast(cube);
 	return (0);
 }

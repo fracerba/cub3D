@@ -47,16 +47,22 @@ typedef struct s_cubed
 	void	*mlx;
 	void	*window;
 	char    **map;
+	int		map_height;
+	int		map_width;
 	t_img   NO_wall;
     t_img	EA_wall;
     t_img	SO_wall;
     t_img	WE_wall;
 	t_rgb	floor;
 	t_rgb	ceiling;
-    float   px;
-    float   py;
-    float   direction;
-    float   tangenti[/*un botto fra!*/];
+    double	play_x;
+	double	play_y;
+	double	dir_x;
+	double	dir_y;
+	double	cam_x;
+	double	cam_y;
+	double	tangenti[/*un botto fra!*/];
+	int		frames;
 }	t_cubed;
 
 
