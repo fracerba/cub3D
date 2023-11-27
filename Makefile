@@ -1,58 +1,37 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: fracerba <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/31 10:31:08 by fracerba          #+#    #+#              #
-#    Updated: 2023/01/31 10:31:11 by fracerba         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CC=gcc
+FLAGS= -no-pie -Wall -Wextra -Werror
+NAME=cub3D.a
+OUT=cub3D
 
-NAME = cub3D.a
+FILES= cub3d.c hooks.c matrix.c rgb.c utils.c
+OBJECTS=$(FILES:.c=.o)
 
-OUT = cub3D
+LIBFT=libft/
+LIBFTNAME=libft.a
 
-SRCS = cub3d.c \
-		hooks.c \
-		utils.c \
-
-OBJS = ${SRCS:.c=.o}
-
-CC = gcc
-
-RM = rm -f
-
-FLAGS = -Wall -Werror -Wextra
-
-LINKS = -lreadline
-
-LIBFT = libft
-
-LIBFTNAME = libft.a
-	
 %.o: %.c
-	${CC} ${FLAGS} -g -c $< -o ${<:.c=.o} ${LINKS}
+	$(CC) $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
-$(NAME): ${OBJS}
-	make bonus -C ${LIBFT}
-	mv ${LIBFT}/${LIBFTNAME} ${NAME}
-	${CC} ${FLAGS} ${OBJS} ${NAME} -o ${OUT} ${LINKS}
+all: $(NAME)
 
-all: ${NAME}
+$(NAME): $(OBJECTS)
+	$(MAKE) -C $(LIBFT)
+	mv $(LIBFT)$(LIBFTNAME) $(NAME)
+	$(CC) $(FLAGS) $(OBJECTS) $(NAME) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(OUT)
 
-bonus:	${OBJS}
-	make bonus -C ${LIBFT}
-	mv ${LIBFT}/${LIBFTNAME} ${NAME}
-	${CC} ${FLAGS} ${OBJS} ${NAME} -o ${OUT} ${LINKS}
+clean:
+	rm -f $(OBJECTS) $(BONUS_OBJECTS)
+	$(MAKE) clean -C $(LIBFT)
 
-clean: 
-	${RM} ${OBJS}
-	make clean -C ${LIBFT}
+fclean: clean
+	rm -f $(NAME)
+	rm -f $(LIBFT)$(LIBFTNAME)
 
-fclean: clean 
-	${RM} ${NAME}
-	make fclean -C ${LIBFT}
+re:	fclean $(NAME)
 
-re: fclean all
+bonus: $(OBJECTS)
+	$(MAKE) bonus -C $(PRINTF)
+	mv $(LIBFT)$(LIBFTNAME) $(NAME)
+	$(CC) $(FLAGS) $(OBJECTS) $(NAME) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(OUT)
+
+.PHONY:	all clean fclean re bonus

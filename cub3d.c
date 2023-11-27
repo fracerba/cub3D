@@ -23,14 +23,14 @@ int	ft_check_file(char *argv)
 	s = ".cub";
 	if (i < 4)
 	{
-		ft_printf("Error\nIl file passato non e' un file \".cub\"");
+		ft_printf("Error\nThe parsed file isn't a \".cub\" file!\n");
 		return (0);
 	}
 	while (argv[i - 4 + j])
 	{
 		if (argv[i - 4 + j] != s[j])
 		{
-			ft_printf("Error\nIl file passato non e' un file \".cub\"");
+			ft_printf("Error\nThe parsed file isn't a \".cub\" file!\n");
 			return (0);
 		}
 		j++;
@@ -59,7 +59,8 @@ int	main(int argc, char **argv)
 		ft_printf("Error!\nThe file doesn't exist!\n");
 		return (1);
 	}
-	get_map(fd, &cube);
-	start_raycast(cube);
+	if(get_map(fd, &cube))
+		start_raycast(cube);
+	free_all(cube);
 	return (0);
 }

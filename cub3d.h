@@ -42,6 +42,21 @@ typedef struct s_rgb
     int blue;
 }   t_rgb;
 
+typedef struct s_check
+{
+    char	**map;
+	char	**copy;
+	char	*var[6];
+	int		n_var;
+	int		map;
+    int		valid;
+	int		height;
+	int		width;
+    int		px;
+	int		py;
+	int		n_start;
+}   t_check;
+
 typedef struct s_cubed
 {
 	void	*mlx;
@@ -61,7 +76,7 @@ typedef struct s_cubed
 	double	dir_y;
 	double	cam_x;
 	double	cam_y;
-	double	tangenti[/*un botto fra!*/];
+	double	tngs[/*un botto fra!*/];
 	int		frames;
 }	t_cubed;
 
@@ -72,7 +87,7 @@ int	main(int argc, char **argv);
 
 //hooks.c
 
-//utils.c
+//rgb.c
 int rgb_compare(t_rgb a, t_rgb b);
 
 #endif
