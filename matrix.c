@@ -12,7 +12,6 @@
 
 #include "cub3d.h"
 
-
 int	mat_len(char **mat)
 {
 	int	i;
@@ -42,7 +41,7 @@ char	**dup_matrix(char **mat)
 	return (new);
 }
 
-void	free_matrix(char **mat)
+int	free_matrix(char **mat)
 {
 	int	i;
 
@@ -52,4 +51,5 @@ void	free_matrix(char **mat)
 	while (mat[++i])
 		free(mat[i]);
 	free(mat);
+	return (1);
 }

@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*	                                                                          */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -19,11 +19,30 @@ int skip_spaces(char *str)
 	i = 0;
 	if(!str)
 		return (0);
-	while (str[i] && str[i] != ' ' && (str[i] < 9 || str[i] > 13))
+	while (str[i] && str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if(!str[i])
 		return (-1);
 	return (i);
+}
+
+int get_size(char *str)
+{
+	int		i;
+	int		fd;
+	char	*tmp;
+
+	fd = open(str, O_RDONLY);
+	tmp = get_next_line(fd);
+	i = 0;
+    while (tmp)
+    {
+        if(skip_spaces(tmp) > 0)
+        	i++;
+        free(tmp);
+        tmp = get_next_line(fd);
+	}
+	return (i);	
 }
 
 char	*replace_spaces(char *tmp)
@@ -40,6 +59,5 @@ char	*replace_spaces(char *tmp)
 		if(str[i] >= 9 && str[i] <= 13)
 			str[i] = ' ';
 	}
-	free(tmp);
 	return (str);
 }

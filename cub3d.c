@@ -60,7 +60,8 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	if(get_map(fd, &cube, argv[1]))
-		start_raycast(cube);
+		ft_printf("daje!\n");
+		//start_raycast(cube);
 	free_all(cube);
 	return (0);
 }
