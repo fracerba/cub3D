@@ -12,6 +12,19 @@
 
 #include "cub3d.h"
 
+
+int	mat_len(char **mat)
+{
+	int	i;
+
+	if (!mat)
+		return (NULL);
+	i = 0;
+	while (mat[i])
+		i++;
+	return (i);
+}
+
 char	**dup_matrix(char **mat)
 {
 	int		i;
@@ -20,9 +33,7 @@ char	**dup_matrix(char **mat)
 
 	if (!mat)
 		return (NULL);
-	i = 0;
-	while (mat[i])
-		i++;
+	i = mat_len(mat);
 	new = malloc((i + 1) * sizeof(char *));
 	i = -1;
 	while (mat[++i])

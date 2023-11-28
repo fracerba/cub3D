@@ -25,3 +25,21 @@ int skip_spaces(char *str)
 		return (-1);
 	return (i);
 }
+
+char	*replace_spaces(char *tmp)
+{
+	char *str;
+	int i;
+
+	if(!tmp)
+		return (NULL);
+	str = ft_strdup(tmp);
+	i = -1;
+	while (str[++i])
+	{
+		if(str[i] >= 9 && str[i] <= 13)
+			str[i] = ' ';
+	}
+	free(tmp);
+	return (str);
+}

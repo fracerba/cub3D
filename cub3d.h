@@ -48,7 +48,7 @@ typedef struct s_check
 	char	**copy;
 	char	*var[6];
 	int		n_var;
-	int		map;
+	int		map_start;
     int		valid;
 	int		height;
 	int		width;
