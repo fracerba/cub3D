@@ -29,16 +29,25 @@ int skip_spaces(char *str)
 int get_size(char *str)
 {
 	int		i;
+	int		s;
 	int		fd;
 	char	*tmp;
 
 	fd = open(str, O_RDONLY);
 	tmp = get_next_line(fd);
+	s = 0;
 	i = 0;
     while (tmp)
     {
-        if(skip_spaces(tmp) >= 0)
-        	i++;
+		if(check_map_start(tmp) && !s)
+			s = 1;
+		if(!s)
+		{
+        	if(skip_spaces(tmp) >= 0)
+        		i++;
+		}
+		else
+			i++;
         free(tmp);
         tmp = get_next_line(fd);
 	}
@@ -61,4 +70,17 @@ char	*replace_spaces(char *tmp)
 			str[i] = ' ';
 	}
 	return (str);
+}
+
+int	free_var(char **mat)
+{
+	int	i;
+
+	if (!mat)
+		return (1);
+	i = -1;
+	while ((++i) < 7)
+		free(mat[i]);
+	free(mat);
+	return (1);
 }

@@ -83,21 +83,32 @@ typedef struct s_cubed
 
 //cub3d.c
 int		ft_check_file(char *argv);
+void	free_all(t_cubed *cube);
 int		main(int argc, char **argv);
 
 //error.c
+void	print_error2(int i);
 int		print_error(int i, int e);
 
 //hooks.c
 
+
 //map.c
-t_check	*init_check(char *arg);
+t_check *init_check(char *arg);
+int		free_check(t_check *check);
+void	set_cubed(t_cubed **cube, t_check *check);
+int		get_map(t_cubed **cube, char *arg, int i, int fd);
+
+//map2.c
+void	init_var(t_check *check);
 int		check_map_start(char *str);
+int		assign_var_aux(char *str, t_check *check, int i);
 int		assign_var(char **mat, t_check *check);
-int		check_map(t_check *check);
-int		check_var(t_check *check, int i, int j);
-int		free_check(t_cubed **cube, t_check *check);
-int		get_map(t_cubed **cube, char *arg);
+int		check_var(t_check *check, int i);
+
+//map3.c
+int		check_char(char c);
+int		check_map(t_check *check, int i, int j);
 
 //matrix.c
 void	print_matrix(char **mat);
@@ -114,5 +125,6 @@ t_rgb	*rgb_assign(int r, int g, int b);
 int		skip_spaces(char *str);
 int		get_size(char *str);
 char	*replace_spaces(char *tmp);
+int		free_var(char **mat);
 
 #endif

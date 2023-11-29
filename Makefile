@@ -18,6 +18,8 @@ SRCS = cub3d.c \
 		error.c \
 		hooks.c \
 		map.c \
+		map2.c \
+		map3.c \
 		matrix.c \
 		rgb.c \
 		utils.c \
