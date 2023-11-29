@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 11:25:51 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/07 11:30:22 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/21 15:16:05 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/21 15:16:07 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 
-t_stack	*ft_lstnew(int content)
+t_list	*ft_lstnew(void *content)
 {
-	t_stack	*node;
+	t_list	*element;
 
-	node = malloc(sizeof(t_stack));
-	if (node)
-	{
-		node->x = content;
-		node->next = 0;
-	}
-	return (node);
+	element = (t_list *) malloc(sizeof(*element));
+	if (!element)
+		return (0);
+	element -> content = content;
+	element -> next = 0;
+	return (element);
 }

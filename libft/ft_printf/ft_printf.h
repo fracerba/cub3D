@@ -1,59 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:12:35 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/14 18:12:37 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/11/17 11:26:57 by fracerba          #+#    #+#             */
+/*   Updated: 2022/12/09 10:40:08 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
+
 # include <unistd.h>
-# include "../libft.h"
+# include <stdlib.h>
+# include <stdarg.h>
+# include <stdio.h>
+# include <stdint.h>
+# include <limits.h>
 
-typedef struct s_flags{
-	int	pad;
-	int	meno;
-	int	punto;
-	int	numsign;
-	int	spazio;
-	int	piu;
-	int	npad[2];
-}	t_flags;
-
-int		unnbrlen(unsigned long n, unsigned int base);
-int		nbrlen(long n, int base, int spc);
-int		ft_max(int n1, int n2);
-void	ft_reset(t_flags *flags);
-int		get_flags(const char *str, char *set, t_flags *flags);
-void	ft_putchar(char c);
-int		ft_putstr(char *s, int bypass);
-void	ft_putpad(int npad, int pad);
-void	ft_putnbrbase(long n, int base, int uc, t_flags flags);
-void	ft_putunnbrbase(unsigned long n, unsigned int bs, int uc, t_flags fags);
-int		ft_printf(const char *str, ...);
-int		manage_almost_flag(int *i, int result);
-int		manage_real_flags(int *i, int result, const char *str, va_list arg_ptr);
-int		manage_no_flag(int *i, int result, const char *str);
-int		manage_char_flag(int result, t_flags flags, va_list arg_ptr);
-int		manage_string_flag(int len, int result, char *strvar, t_flags flags);
-int		manage_nostring_flag(int result, t_flags flags);
-int		manage_nbr_flag(int result, t_flags flags, va_list arg_ptr);
-int		manage_uns_flag(int result, t_flags flags, va_list arg_ptr);
-int		manage_hex_flag(int result, char flag, t_flags flags, va_list arg_ptr);
-int		manage_imptr_flag(int result, long n, t_flags flags);
-int		manage_ptr_flag(int result, t_flags flags, va_list arg_ptr);
-int		manage_more_flags(int result, char flag, t_flags flags, va_list ap);
-int		manage_flags(int i, const char *str, t_flags *flags);
-void	managenbr(long n, int base, int spc, t_flags flags);
-char	*ptrtostr(long ptr, int i, int tmp, t_flags flags);
-int		ptrtostr1(int *len, char **str, t_flags *flags);
-int		ptrtostr2(int *len, int *i, char *str, t_flags flags);
+int		ft_printf(const char *pointer, ...);
+int		ft_putchar(int i);
+int		ft_putnbr(int n);
+int		ft_putstr(char *str);
+int		ft_putnbr_unsigned(unsigned int n);
+int		ft_putpercentage(void);
+int		ft_putpointer(void *p);
+int		ft_puthex_upper(unsigned int c);
+int		ft_puthex_lower(unsigned int c);
+int		ft_formats(va_list args, const char format);
+int		ft_hex_count(unsigned int c);
+int		ft_check_zero(unsigned int c);
+void	ft_rev_tab(char *str);
+char	*ft_hex_conv(unsigned int c, char *str);
+char	*ft_lower_to_upper(char *str);
+int		ft_count(unsigned int c);
+char	*ft_itoa(int n);
+char	*ft_utoa(unsigned int c);
 
 #endif

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 15:18:14 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/07 15:22:44 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/21 15:14:27 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/21 15:14:32 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-#include "libft.h"
 
-void	ft_lstdelone(t_stack *lst, void (*del)(int))
+#include "libft.h"
+#include <stdlib.h>
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst)
-	{
-		del(lst->x);
-		free(lst);
-	}
+	if (!lst || !del)
+		return ;
+	del(lst -> content);
+	free(lst);
 }

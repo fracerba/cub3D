@@ -3,27 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 11:11:17 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/07 11:17:07 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/04 12:05:43 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/04 12:05:46 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+#include <unistd.h>
+
+static void	ft_write(int n, int fd)
+{
+	int		j;
+	char	c[10];
+
+	j = 0;
+	while (n > 0)
+	{
+		c[j] = (n % 10) + 48;
+		n = n / 10;
+		j++;
+	}
+	j--;
+	while (j >= 0)
+	{
+		write(fd, &c[j], 1);
+		j--;
+	}
+}
 
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{
-		ft_putstr_fd("-2", fd);
-		n = 147483648;
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n == 0)
+	{
+		write(fd, "0", 1);
+		return ;
 	}
 	if (n < 0)
 	{
-		n *= -1;
-		ft_putchar_fd('-', fd);
+		write(fd, "-", 1);
+		n = -n;
 	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + 48, fd);
+	ft_write(n, fd);
 }

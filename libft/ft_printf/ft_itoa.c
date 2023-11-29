@@ -6,13 +6,11 @@
 /*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:04:33 by fracerba          #+#    #+#             */
-/*   Updated: 2022/10/04 12:04:37 by fracerba         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:43:43 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
 static char	*set_min_int(char *nmb)
 {

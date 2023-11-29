@@ -18,8 +18,8 @@ int skip_spaces(char *str)
 
 	i = 0;
 	if(!str)
-		return (0);
-	while (str[i] && str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		return (-1);
+	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
 		i++;
 	if(!str[i])
 		return (-1);
@@ -37,11 +37,12 @@ int get_size(char *str)
 	i = 0;
     while (tmp)
     {
-        if(skip_spaces(tmp) > 0)
+        if(skip_spaces(tmp) >= 0)
         	i++;
         free(tmp);
         tmp = get_next_line(fd);
 	}
+	close(fd);
 	return (i);	
 }
 

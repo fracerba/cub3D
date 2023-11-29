@@ -22,20 +22,21 @@ int	ft_check_file(char *argv)
 	j = 0;
 	s = ".cub";
 	if (i < 4)
-	{
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
-		return (0);
-	}
+		return (print_error(4, 0));
 	while (argv[i - 4 + j])
 	{
 		if (argv[i - 4 + j] != s[j])
-		{
-			ft_printf("Error\nThe file isn't a \".cub\" file!\n");
-			return (0);
-		}
+			return (print_error(4, 0));
 		j++;
 	}
 	return (1);
+}
+
+void	free_all(t_cubed *cube)
+{
+	free(cube);
+	cube = NULL;
+	ft_printf("SIUM!\n");
 }
 
 int	main(int argc, char **argv)
@@ -43,23 +44,18 @@ int	main(int argc, char **argv)
 	int	fd;
 	t_cubed *cube;
 
-	if (argc != 2)
-	{
-		if (argc > 2)
-			ft_printf("Error!\nToo many arguments!\n");
-		else
-			ft_printf("Error!\nNot enough arguments!\n");
-		return (1);
-	}
+	cube = NULL;
+	if (argc > 2)
+		return (print_error(1, 1));
+	else if (argc < 2)
+		return (print_error(2, 1));
 	if (!ft_check_file(argv[1]))
 		return (1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("Error!\nThe file doesn't exist!\n");
-		return (1);
-	}
-	if(get_map(fd, &cube, argv[1]))
+		return (print_error(3, 1));
+	close(fd);
+	if(get_map(&cube, argv[1]))
 		ft_printf("daje!\n");
 		//start_raycast(cube);
 	free_all(cube);

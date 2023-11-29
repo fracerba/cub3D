@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 11:40:51 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/07 11:46:48 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/21 15:15:44 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/21 15:15:46 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-t_stack	*ft_lstlast(t_stack *lst)
+#include "libft.h"
+#include <stdlib.h>
+
+t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (lst);
-	while (lst->next)
-		lst = lst->next;
+	while (lst)
+	{
+		if (!(lst -> next))
+			return (lst);
+		lst = lst -> next;
+	}
 	return (lst);
 }

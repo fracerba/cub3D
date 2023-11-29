@@ -3,76 +3,107 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 09:44:13 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/06 10:09:00 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/04 11:59:37 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/04 11:59:40 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include "libft.h"
+#include <stdlib.h>
 
-static int	count_words(char const *s, char c)
+static int	counter(char const *s, char c)
 {
-	int		i;
-	int		count;
+	int	i;
+	int	k;
 
-	count = 0;
+	k = 0;
 	i = 0;
-	while (s[i])
+	while (*(s + i) != '\0')
 	{
-		if (s[i] != c)
+		if (*(s + i) != c)
 		{
-			while (s[i] && s[i] != c)
+			k++;
+			while (*(s + i) != c && *(s + i) != '\0')
 				i++;
-			count++;
-			continue ;
 		}
-		i++;
+		else
+			i++;
 	}
-	return (count);
+	return (k + 1);
 }
 
-static int	count_chr(const char *s, char c)
+static char	**alloc_split(char const *s, char c, char **split)
 {
 	int		i;
-	int		count;
+	int		j;
+	int		k;
 
 	i = 0;
-	count = 0;
-	while (s[i] && s[i] != c)
+	j = 0;
+	k = 0;
+	while (*(s + i) != '\0')
 	{
-		i++;
-		count++;
+		if (*(s + i) != c)
+		{
+			while (*(s + i + j) != c && *(s + i + j) != '\0')
+				j++;
+			split[k] = malloc((j + 1) * 1);
+			k++;
+			i = i + j;
+			j = 0;
+		}
+		else
+			i++;
 	}
-	return (count);
+	return (split);
+}
+
+static char	**split_string(char const *s, char c, char **split, int j)
+{
+	int		i;
+	int		k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (*(s + i) != '\0')
+	{
+		if (*(s + i) != c)
+		{
+			while (*(s + i + j) != c && *(s + i + j) != '\0')
+			{
+				split[k][j] = *(s + i + j);
+				j++;
+			}
+			split[k][j] = 0;
+			k++;
+			i = i + j;
+			j = 0;
+		}
+		else
+			i++;
+	}
+	split[k] = 0;
+	return (split);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
 	int		j;
-	int		count;
-	int		count2;
-	char	**pnt;
+	int		k;
+	char	**split;
 
-	count = count_words(s, c);
-	pnt = malloc(sizeof(char *) * (count + 1));
-	if (!pnt)
-		return (pnt);
-	pnt[count] = 0;
-	i = 0;
+	if (!s)
+		return (0);
+	j = counter(s, c);
+	k = sizeof(char *);
+	split = malloc(j * k);
+	if (!split)
+		return (0);
 	j = 0;
-	while (i < count)
-	{
-		count2 = count_chr(&s[j], c);
-		j += count2 + 1;
-		if (!count2)
-			continue ;
-		pnt[i] = malloc(sizeof(char) * (count2 + 1));
-		if (!pnt[i])
-			return (pnt);
-		ft_strlcpy(pnt[i++], &s[j - count2 - 1], count2 + 1);
-	}
-	return (pnt);
+	split = alloc_split(s, c, split);
+	split = split_string(s, c, split, j);
+	return (split);
 }

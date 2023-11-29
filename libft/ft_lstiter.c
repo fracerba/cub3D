@@ -3,19 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 17:05:08 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/07 17:21:42 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/21 15:15:30 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/21 15:15:34 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	ft_lstiter(t_stack *lst, void (*f)(int))
+#include "libft.h"
+#include <stdlib.h>
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	if (!lst && !f)
+		return ;
 	while (lst)
 	{
-		f(lst->x);
-		lst = lst->next;
+		(*f)(lst -> content);
+		lst = lst -> next;
 	}
 }

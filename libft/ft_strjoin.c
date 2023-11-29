@@ -3,23 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 15:42:09 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/05 15:46:47 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/04 12:01:07 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/04 12:01:13 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len;
-	char	*str;
+	char	*join;
+	int		i;
+	int		j;
 
-	len = ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1;
-	str = malloc(len);
-	ft_strlcpy(str, s1, len);
-	ft_strlcat(str, s2, len);
-	return (str);
+	i = 0;
+	while (*(s1 + i) != '\0')
+		i++;
+	j = 0;
+	while (*(s2 + j) != '\0')
+		j++;
+	join = malloc((i + j + 1) * 1);
+	i = 0;
+	while (*(s1 + i) != '\0')
+	{
+		*(join + i) = *(s1 + i);
+		i++;
+	}
+	j = 0;
+	while (*(s2 + j) != '\0')
+	{
+		*(join + i + j) = *(s2 + j);
+		j++;
+	}
+	*(join + i + j) = '\0';
+	return (join);
 }

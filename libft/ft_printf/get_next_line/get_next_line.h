@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 15:37:26 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/25 15:39:00 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/11/14 11:14:07 by fracerba          #+#    #+#             */
+/*   Updated: 2022/11/14 11:14:12 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1000
 # endif
 
-# include "../libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
-char	*ft_strdup2(const char *s);
-char	*ft_strjoin2(const char *s1, const char *s2);
+char	*ft_strchr1(char *s, int c);
+int		ft_strlen(char *str);
+char	*ft_strjoin1(char *s1, char *s2);
+char	*ft_strjoin2(char *s1, char *s2, char *join);
+char	*ft_get_line(char *s1);
+char	*ft_string(char *s1);
+char	*ft_read(int fd, char *s1);
 
 #endif

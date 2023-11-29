@@ -3,20 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 12:40:14 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/04 13:07:39 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/04 11:40:13 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/04 11:40:16 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
+
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_calloc(unsigned int nmemb, unsigned int size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*p;
+	void			*call;
+	size_t			i;
+	unsigned char	*temp;
 
-	p = malloc(nmemb * size);
-	ft_bzero(p, nmemb * size);
-	return (p);
+	i = 0;
+	call = malloc(nmemb * size);
+	if (!call)
+		return (0);
+	temp = (unsigned char *)call;
+	while (i < (nmemb * size))
+	{
+		*(temp + i) = 0;
+		i++;
+	}
+	return (call);
 }

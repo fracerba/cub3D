@@ -1,24 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_printf_utils_3.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 11:21:04 by fracerba          #+#    #+#             */
-/*   Updated: 2022/10/04 11:21:06 by fracerba         ###   ########.fr       */
+/*   Created: 2022/12/07 10:10:37 by fracerba          #+#    #+#             */
+/*   Updated: 2022/12/09 10:41:47 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isalnum(int c)
+void	ft_rev_tab(char *str)
 {
-	if ((c > 64) && (c < 91))
-		return (1);
-	else if ((c > 96) && (c < 123))
-		return (1);
-	else if ((c > 47) && (c < 58))
-		return (1);
+	int		i;
+	int		s;
+	char	c;
+
+	i = 0;
+	s = 0;
+	while (*(str + s) != '\0')
+		s++;
+	s = s - 1;
+	while (i < (s - i))
+	{
+		c = *(str + i);
+		*(str + i) = *(str + (s - i));
+		*(str + (s - i)) = c;
+		i++;
+	}
+	return ;
+}
+
+int	ft_check_zero(unsigned int c)
+{
+	int	i;
+
+	i = 0;
+	if (c == 0)
+	{
+		i = i + ft_putchar(48);
+		return (i);
+	}
 	return (0);
 }

@@ -85,16 +85,23 @@ typedef struct s_cubed
 int		ft_check_file(char *argv);
 int		main(int argc, char **argv);
 
+//error.c
+int		print_error(int i, int e);
+
 //hooks.c
 
 //map.c
 t_check	*init_check(char *arg);
 int		check_map_start(char *str);
-int		assign_var(char **mat, t_check **check);
-int		check_var(t_check **check, int i, int j);
-int		get_map(int fd, t_cubed **cube, char *arg);
+int		assign_var(char **mat, t_check *check);
+int		check_map(t_check *check);
+int		check_var(t_check *check, int i, int j);
+int		free_check(t_cubed **cube, t_check *check);
+int		get_map(t_cubed **cube, char *arg);
 
 //matrix.c
+void	print_matrix(char **mat);
+void	print_matrix_nl(char **mat);
 int		mat_len(char **mat);
 char	**dup_matrix(char **mat);
 int		free_matrix(char **mat);

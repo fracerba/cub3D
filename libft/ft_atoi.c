@@ -3,59 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 11:57:18 by scaiazzo          #+#    #+#             */
-/*   Updated: 2022/10/04 12:00:06 by scaiazzo         ###   ########.fr       */
+/*   Created: 2022/10/04 11:39:39 by fracerba          #+#    #+#             */
+/*   Updated: 2022/10/04 11:39:42 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include "libft.h"
+
+int	ft_atoi(const char *nptr)
 {
-	int	result;
-	int	neg;
+	int	nb;
+	int	s;
+	int	i;
 
-	result = 0;
-	neg = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-')
+	nb = 0;
+	i = 0;
+	s = 1;
+	while ((*(nptr + i) > 8 && *(nptr + i) < 14) || *(nptr + i) == 32)
 	{
-		neg = -1;
-		str++;
+		i++;
 	}
-	if (*str == '+' && neg != -1)
-		str++;
-	while (*str >= '0' && *str <= '9')
+	if (*(nptr + i) == 43 || *(nptr + i) == 45)
 	{
-		result = (result * 10) + (*str - 48);
-		str++;
+		if (*(nptr + i) == 45)
+			s = -s;
+		i++;
 	}
-	return (result * neg);
-}
-
-long	ft_int_atoi(char *str)
-{
-	long	result;
-	int		neg;
-
-	result = 0;
-	neg = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-')
+	while (*(nptr + i) > 47 && *(nptr + i) < 58)
 	{
-		neg = -1;
-		str++;
+		nb = nb * 10;
+		nb = nb + (*(nptr + i) - 48);
+		i++;
 	}
-	if (*str == '+' && neg != -1)
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		result = (result * 10) + (*str - 48);
-		str++;
-	}
-	if (result * neg > 2147483647 || result * neg < -2147483648)
-		return (3000000000);
-	return (result * neg);
+	return (nb * s);
 }
