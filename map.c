@@ -54,7 +54,8 @@ int free_check(t_check *check)
 
 void set_cubed(t_cubed **cube, t_check *check)
 {
-	free(cube);
+	if(!cube)
+		return ;
 	free_check(check);
 }
 
@@ -67,21 +68,19 @@ int get_map(t_cubed **cube, char *arg, int i, int fd)
 	if(!check)
 		return (1);
     fd = open(arg, O_RDONLY);
-    tmp = get_next_line(fd);
+    tmp = trim_nl(get_next_line(fd));
     while (tmp)
     {
 		if(check_map_start(tmp) && !check->map_start)
-			check->map_start = i;
-		if(!check->map_start)
-		{
-			if(skip_spaces(tmp) >= 0)
-				check->copy[i++] = ft_strdup(tmp);
-		}
-		else
+			check->map_start = 1;
+		if(!check->map_start && skip_spaces(tmp) >= 0)
+			check->copy[i++] = ft_strdup(tmp);
+		else if(check->map_start)
 			check->copy[i++] = ft_strdup(tmp);
         free(tmp);
-        tmp = get_next_line(fd);
+        tmp = trim_nl(get_next_line(fd));
     }
+	check->copy[i] = NULL;
     close(fd);
     if(check_var(check, 0))
 		return (free_check(check));

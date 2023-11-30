@@ -28,8 +28,8 @@ int check_map(t_check *check, int i, int j)
 	ft_printf("---------------------------------\n");
     	print_matrix_nl(check->var);
 	ft_printf("---------------------------------\n");
-    	print_matrix(check->map);
-	free_matrix(check->copy);
+    	print_matrix_nl(check->map);
+	//free_matrix(check->copy);
 	while (check->map[++i])
 	{
 		j = -1;
@@ -42,13 +42,13 @@ int check_map(t_check *check, int i, int j)
 				check->n_start++;
 			}
             else if(check_char(check->map[i][j]) < 0)
-                return(print_error(100, 1));
+                return(print_error(15, 1));
 		}
 	}
 	if (check->n_start > 1)
-		return (print_error(5, 1));
+		return (print_error(17, 1));
 	else if (check->n_start < 1)
-		return (print_error(6, 1));
+		return (print_error(16, 1));
 	return (0);
 }
 

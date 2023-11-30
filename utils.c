@@ -84,3 +84,26 @@ int	free_var(char **mat)
 	free(mat);
 	return (1);
 }
+
+char	*trim_nl(char *str)
+{
+	int		i;
+	int		j;
+	char	*new;
+
+	if (!str)
+		return (NULL);
+	i = ft_strlen(str);
+	if (str[i - 1] != '\n')
+		return (str);
+	new = malloc(i * sizeof(char));
+	j = 0;
+	while (j < (i - 1))
+	{
+		new[j] = str[j];
+		j++;
+	}
+	new[j] = 0;
+	free(str);
+	return (new);
+}

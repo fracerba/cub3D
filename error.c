@@ -21,11 +21,11 @@ void print_error2(int i)
 	else if(i == 14)
 		ft_printf("Error\nThe map is absent!\n");
 	else if(i == 15)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nThere are invalid characters in the map!\n");
 	else if(i == 16)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nNo starting points in the map!\n");
 	else if(i == 17)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nMultiple starting points in the map!\n");
 	else if(i == 18)
 		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
 	else if(i == 19)

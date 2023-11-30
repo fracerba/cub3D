@@ -28,12 +28,16 @@ int	check_map_start(char *str)
 {
 	int i;
 
-	i = 0;
-	while (str[i] && check_char(str[i]) >= 0)
-		i++;
-	if(!str[i])
-		return(1);
-	return (0);
+    if(!ft_strlen(str))
+        return (0);
+    i = 0;
+	while (str[i])
+    {
+        if(check_char(str[i]) < 0)
+            return (0);
+        i++;
+    }
+	return (1);
 }
 
 int assign_var_aux(char *str, t_check *check, int i)
@@ -69,8 +73,8 @@ int assign_var(char **mat, t_check *check)
 
 int check_var(t_check *check, int i)
 {
-    char		**mat;
-    char		*str;
+    char	**mat;
+    char	*str;
 
 	init_var(check);
     while(check->copy[i] && !check_map_start(check->copy[i]))

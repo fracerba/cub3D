@@ -126,5 +126,6 @@ int		skip_spaces(char *str);
 int		get_size(char *str);
 char	*replace_spaces(char *tmp);
 int		free_var(char **mat);
+char	*trim_nl(char *str);
 
 #endif
