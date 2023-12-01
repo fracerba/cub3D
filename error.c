@@ -15,7 +15,7 @@
 void print_error2(int i)
 {
 	if(i == 12)
-		ft_printf("Error\nF is declared twice!!\n");
+		ft_printf("Error\nC is declared twice!!\n");
 	else if(i == 13)
 		ft_printf("Error\nNot all the elements have been declared before the map!\n");
 	else if(i == 14)
@@ -27,17 +27,17 @@ void print_error2(int i)
 	else if(i == 17)
 		ft_printf("Error\nMultiple starting points in the map!\n");
 	else if(i == 18)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nThe map isn't closed!\n");
 	else if(i == 19)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nThe map isn't surrounded by walls!\n");
 	else if(i == 20)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nThere are informations after the map!\n");
 	else if(i == 21)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nThe image isn't a \".xpm\" file!\n");
 	else if(i == 22)
 		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
 	else if(i == 23)
-		ft_printf("Error!\nThe file isn't a \".cub\" file!\n");
+		ft_printf("Error\nThe rgb values are invalid!\n");
 }
 
 int print_error(int i, int e)

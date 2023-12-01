@@ -27,24 +27,32 @@ void init_var(t_check *check)
 int	check_map_start(char *str)
 {
 	int i;
+	int j;
+	int	k;
 
     if(!ft_strlen(str))
         return (0);
     i = 0;
+	j = 0;
 	while (str[i])
     {
-        if(check_char(str[i]) < 0)
+		k = check_char(str[i]);
+        if(k < 0)
             return (0);
+		if(k > 0)
+			j = 1;
         i++;
     }
-	return (1);
+	if(j)
+		return (1);
+	return(0);
 }
 
 int assign_var_aux(char *str, t_check *check, int i)
 {
     if(!check->var[i])
     {
-        check->var[i] = ft_strdup(str);
+        check->var[i] = better_strdup(str);
         check->n_var++;
 	}
     else
@@ -93,6 +101,8 @@ int check_var(t_check *check, int i)
 		return (print_error(14, 1));
 	if(check->n_var < 6)
 		return (print_error(13, 1));
-	check->map = dup_matrix(&check->copy[i]);
+	check->map = check_dup_matrix(&check->copy[i]);
+    if(!check->map)
+		return (1);
 	return(check_map(check, -1, -1));
 }

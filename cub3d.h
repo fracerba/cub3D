@@ -108,6 +108,7 @@ int		check_var(t_check *check, int i);
 
 //map3.c
 int		check_char(char c);
+void	get_map_info(t_check *check);
 int		check_map(t_check *check, int i, int j);
 
 //matrix.c
@@ -115,6 +116,8 @@ void	print_matrix(char **mat);
 void	print_matrix_nl(char **mat);
 int		mat_len(char **mat);
 char	**dup_matrix(char **mat);
+char	**check_dup_aux(char **mat, int i);
+char	**check_dup_matrix(char **mat);
 int		free_matrix(char **mat);
 
 //rgb.c
@@ -127,5 +130,6 @@ int		get_size(char *str);
 char	*replace_spaces(char *tmp);
 int		free_var(char **mat);
 char	*trim_nl(char *str);
+char	*better_strdup(char *str);
 
 #endif

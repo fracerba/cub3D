@@ -34,22 +34,19 @@ int get_size(char *str)
 	char	*tmp;
 
 	fd = open(str, O_RDONLY);
-	tmp = get_next_line(fd);
+	tmp = trim_nl(get_next_line(fd));
 	s = 0;
 	i = 0;
     while (tmp)
     {
-		if(check_map_start(tmp) && !s)
+		if(!s && check_map_start(tmp))
 			s = 1;
-		if(!s)
-		{
-        	if(skip_spaces(tmp) >= 0)
+		if(!s && skip_spaces(tmp) >= 0)
         		i++;
-		}
-		else
+		else if(s)
 			i++;
         free(tmp);
-        tmp = get_next_line(fd);
+        tmp = trim_nl(get_next_line(fd));
 	}
 	close(fd);
 	return (i);	
@@ -106,4 +103,20 @@ char	*trim_nl(char *str)
 	new[j] = 0;
 	free(str);
 	return (new);
+}
+
+char	*better_strdup(char *str)
+{
+	char	*tmp;
+
+	if(!str)
+		return(NULL);
+	if(!ft_strlen(str))
+	{
+		tmp = malloc(sizeof(char) * 1);
+		tmp[0] = 0;
+		return (tmp);
+	}
+	else
+		return(ft_strdup(str));
 }

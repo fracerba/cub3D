@@ -71,12 +71,12 @@ int get_map(t_cubed **cube, char *arg, int i, int fd)
     tmp = trim_nl(get_next_line(fd));
     while (tmp)
     {
-		if(check_map_start(tmp) && !check->map_start)
+		if(!check->map_start && check_map_start(tmp))
 			check->map_start = 1;
 		if(!check->map_start && skip_spaces(tmp) >= 0)
-			check->copy[i++] = ft_strdup(tmp);
+			check->copy[i++] = better_strdup(tmp);
 		else if(check->map_start)
-			check->copy[i++] = ft_strdup(tmp);
+			check->copy[i++] = better_strdup(tmp);
         free(tmp);
         tmp = trim_nl(get_next_line(fd));
     }
