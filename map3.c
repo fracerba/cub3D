@@ -42,6 +42,44 @@ void get_map_info(t_check *check)
 	check->width = l;
 }
 
+int	check_var_xpm(char *var, int n)
+{
+	char	*s;
+	int		i;
+	int		j;
+
+	i = ft_strlen(var);
+	s = ".xpm";
+	j = -1;
+	if (i < 4)
+		return (print_error((21 + n), 1));
+	while (var[i - 4 + (++j)])
+	{
+		if (var[i - 4 + j] != s[j])
+			return (print_error((21 + n), 1));
+	}
+	j = open(var, O_RDONLY);
+	if (j < 0)
+		return (print_error((25 + n), 1));
+	close(j);
+	return (0);
+}
+
+int	check_var_values(t_check *check)
+{
+	int	i;
+
+	i = -1;
+	while ((++i) < 4)
+	{
+		if(check_var_xpm(check->var[i], i))
+			return(1);
+	}
+	if(rgb_check(check->var[i], 0) || rgb_check(check->var[i], 1))
+		return (1);
+	return (0);
+}
+
 int check_map(t_check *check, int i, int j)
 {
 	while (check->map[++i])
@@ -62,15 +100,10 @@ int check_map(t_check *check, int i, int j)
 	else if (check->n_start < 1)
 		return (print_error(16, 1));
 	get_map_info(check);
-
-	ft_printf("---------------------------------\n");
-    	print_matrix_nl(check->var);
-	ft_printf("---------------------------------\n");
-    	print_matrix_nl(check->map);
-	ft_printf("---------------------------------\n");
-	//free_matrix(check->copy);
-	ft_printf("w=%i h=%i\n", check->width, check->height);
-
+	// if(check_var_values(check))
+	// 	return(1);
+	if (check_map_borders(check))
+		return(1);
 	return (0);
 }
 

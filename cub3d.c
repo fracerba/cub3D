@@ -41,8 +41,8 @@ void	free_all(t_cubed *cube)
 
 int	main(int argc, char **argv)
 {
-	int	fd;
-	t_cubed *cube;
+	int		fd;
+	t_cubed	*cube;
 
 	cube = NULL;
 	if (argc > 2)
@@ -55,9 +55,9 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (print_error(3, 1));
 	close(fd);
-	if(!get_map(&cube, argv[1], 0, 0))
-		ft_printf("daje!\n");
+	if (!get_map(&cube, argv[1], 0, 0))
 		//start_raycast(cube);
+	ft_printf("daje!\n");
 	free_all(cube);
 	return (0);
 }

@@ -12,6 +12,34 @@
 
 #include "cub3d.h"
 
+void print_error3(int i)
+{
+	if(i == 23)
+		ft_printf("Error\nThe image for SO isn't a \".xpm\" file!\n");
+	else if(i == 24)
+		ft_printf("Error\nThe image for WE isn't a \".xpm\" file!\n");
+	else if(i == 25)
+		ft_printf("Error\nThe file with texture for NO doesn't exist!\n");
+	else if(i == 26)
+		ft_printf("Error\nThe file with texture for EA doesn't exist!\n");
+	else if(i == 27)
+		ft_printf("Error\nThe file with texture for SO doesn't exist!\n");
+	else if(i == 28)
+		ft_printf("Error\nThe file with texture for WE doesn't exist!\n");
+	else if(i == 29)
+		ft_printf("Error\nThe rgb values for F are invalid!\n");
+	else if(i == 30)
+		ft_printf("Error\nThe rgb values for C are invalid!\n");
+	// else if(i == 31)
+	// 	ft_printf("Error\nThe image for isn't a \".xpm\" file!\n");
+	// else if(i == 32)
+	// 	ft_printf("Error\nThe file isn't a \".cub\" file!\n");
+	// else if(i == 33)
+	// 	ft_printf("Error\nThe rgb values for F are invalid!\n");
+	// else if(i == 34)
+	// 	ft_printf("Error\nThe rgb values for C are invalid!\n");
+}
+
 void print_error2(int i)
 {
 	if(i == 12)
@@ -33,11 +61,11 @@ void print_error2(int i)
 	else if(i == 20)
 		ft_printf("Error\nThere are informations after the map!\n");
 	else if(i == 21)
-		ft_printf("Error\nThe image isn't a \".xpm\" file!\n");
+		ft_printf("Error\nThe image for NO isn't a \".xpm\" file!\n");
 	else if(i == 22)
-		ft_printf("Error\nThe file isn't a \".cub\" file!\n");
-	else if(i == 23)
-		ft_printf("Error\nThe rgb values are invalid!\n");
+		ft_printf("Error\nThe image for EA isn't a \".xpm\" file!\n");
+	else if(i >= 23)
+		print_error3(i);
 }
 
 int print_error(int i, int e)

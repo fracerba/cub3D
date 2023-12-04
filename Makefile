@@ -20,9 +20,11 @@ SRCS = cub3d.c \
 		map.c \
 		map2.c \
 		map3.c \
+		map4.c \
 		matrix.c \
 		rgb.c \
 		utils.c \
+		utils2.c \
  
 OBJS = ${SRCS:.c=.o}
 

@@ -104,19 +104,3 @@ char	*trim_nl(char *str)
 	free(str);
 	return (new);
 }
-
-char	*better_strdup(char *str)
-{
-	char	*tmp;
-
-	if(!str)
-		return(NULL);
-	if(!ft_strlen(str))
-	{
-		tmp = malloc(sizeof(char) * 1);
-		tmp[0] = 0;
-		return (tmp);
-	}
-	else
-		return(ft_strdup(str));
-}

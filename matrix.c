@@ -12,34 +12,6 @@
 
 #include "cub3d.h"
 
-void	print_matrix(char **mat)
-{
-	int	i;
-
-	i = 0;
-	if (!mat || !mat[i])
-		return ;
-	while (mat[i])
-	{
-		ft_printf("%s", mat[i]);
-		i++;
-	}
-}
-
-void	print_matrix_nl(char **mat)
-{
-	int	i;
-
-	i = 0;
-	if (!mat || !mat[i])
-		return ;
-	while (mat[i])
-	{
-		ft_printf("%s\n", mat[i]);
-		i++;
-	}
-}
-
 int	mat_len(char **mat)
 {
 	int	i;
