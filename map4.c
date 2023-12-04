@@ -24,7 +24,7 @@ void	set_map_copy(t_check *check)
 	{
 		check->copy[i] = malloc(sizeof(char) * (check->width + 3));
 		j = -1;
-		while ((++j) < (check->width + 3))
+		while ((++j) < (check->width + 2))
 			check->copy[i][j] = ' ';
 		check->copy[i][j] = 0;
 	}
@@ -40,8 +40,44 @@ void	set_map_copy(t_check *check)
 	check->py++;
 }
 
+int	check_map_block(t_check *check, int i, int j, int *t)
+{
+	if (check->copy[i][j] == ' ')
+		return(print_error(18, 1));
+	else if(check->copy[i][j] == '0')
+	{
+		check->copy[i][j] = '3';
+		(*t)++;
+	}
+	else if(check->copy[i][j] != '1' && check->copy[i][j] != '2')
+	{
+		if (check->copy[i][j] != '3')
+			return(print_error(15, 1));
+	}
+	return (0);
+}
+
+int	check_map_borders_aux(t_check *check, int i, int j, int *t)
+{
+	if (check_map_block(check, i, j + 1, t))
+		return (1);
+	else if(check_map_block(check, i, j - 1, t))
+		return (1);
+	else if(check_map_block(check, i + 1, j, t))
+		return (1);
+	else if(check_map_block(check, i - 1, j, t))
+		return (1);
+	check->copy[i][j] = '2';
+	(*t)--;
+	return (0);
+}
+
 int	check_map_borders(t_check *check)
 {
+	int i;
+	int j;
+	int t;
+
 	set_map_copy(check);
 	ft_printf("---------------------------------\n");
 		print_matrix_nl(check->var);
@@ -51,6 +87,27 @@ int	check_map_borders(t_check *check)
 	ft_printf("---------------------------------\n");
 		print_matrix_nl(check->copy);
 		ft_printf("x=%i y=%i c=%c\n", check->px, check->py, check->copy[check->px][check->py]);
+	ft_printf("---------------------------------\n");
+
+	check->copy[check->px][check->py] = '3';
+	t = 1;
+	if (check_map_borders_aux(check, check->px, check->py, &t))
+		return (1);
+	while (t > 0)
+	{
+		i = 0;
+		while ((++i) < (check->height + 2))
+		{
+			j = 0;
+			while ((++j) < (check->width + 2))
+			{
+				if (check->copy[i][j] == '3')
+					if (check_map_borders_aux(check, i, j, &t))
+						return (1);
+			}
+		}
+	}
+		print_matrix_nl(check->copy);
 	ft_printf("---------------------------------\n");
 	return(0);
 }

@@ -115,6 +115,8 @@ int		check_map(t_check *check, int i, int j);
 
 //map4.c
 void	set_map_copy(t_check *check);
+int		check_map_block(t_check *check, int i, int j, int *t);
+int		check_map_borders_aux(t_check *check, int i, int j, int *t);
 int		check_map_borders(t_check *check);
 
 //matrix.c
