@@ -92,7 +92,6 @@ int		print_error(int i, int e);
 
 //hooks.c
 
-
 //map.c
 t_check	*init_check(char *arg);
 int		free_check(t_check *check);
@@ -118,6 +117,12 @@ void	set_map_copy(t_check *check);
 int		check_map_block(t_check *check, int i, int j, int *t);
 int		check_map_borders_aux(t_check *check, int i, int j, int *t);
 int		check_map_borders(t_check *check);
+
+//map5.c
+int		check_outer_block(t_check *check, int i, int j, int *t);
+int		check_map_outer_aux(t_check *check, int i, int j, int *t);
+int		find_first_space(int *x, int *y, char **copy);
+int		check_map_outer_borders(t_check *check, int x, int y, int t);
 
 //matrix.c
 int		mat_len(char **mat);

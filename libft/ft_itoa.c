@@ -63,7 +63,7 @@ static int	counter(int n)
 	{
 		n = -n;
 		c++;
-	}	
+	}
 	while (n > 0)
 	{
 		c++;

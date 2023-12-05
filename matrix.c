@@ -42,7 +42,7 @@ char	**dup_matrix(char **mat)
 
 char	**check_dup_aux(char **mat, int i)
 {
-	int 	j;
+	int		j;
 	char	**new;
 
 	j = i;
@@ -65,26 +65,26 @@ char	**check_dup_aux(char **mat, int i)
 
 char	**check_dup_matrix(char **mat)
 {
-	int 	i;
+	int	i;
 
-	if(!mat)
-		return(NULL);
+	if (!mat)
+		return (NULL);
 	i = -1;
 	while (mat[++i])
 	{
-		if(!check_map_start(mat[i]) || skip_spaces(mat[i]) < 0)
-			break;
+		if (!check_map_start(mat[i]) || skip_spaces(mat[i]) < 0)
+			break ;
 	}
-	if(!mat[i])
-		return(dup_matrix(mat));
-	else if(skip_spaces(mat[i]) < 0)
-		return(check_dup_aux(mat, i));
-	else if(!check_map_start(mat[i]))
+	if (!mat[i])
+		return (dup_matrix(mat));
+	else if (skip_spaces(mat[i]) < 0)
+		return (check_dup_aux(mat, i));
+	else if (!check_map_start(mat[i]))
 	{
 		print_error(15, 1);
 		return (NULL);
 	}
-	return(NULL);
+	return (NULL);
 }
 
 int	free_matrix(char **mat)

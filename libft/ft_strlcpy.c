@@ -30,7 +30,7 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 		{
 			*(dest + i) = *(src + i);
 			i++;
-		}	
+		}
 		*(dest + i) = '\0';
 	}
 	return (l);

@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*	                                                                          */
+/*			                                                                  */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -12,21 +12,21 @@
 
 #include "cub3d.h"
 
-int skip_spaces(char *str)
+int	skip_spaces(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(!str)
+	if (!str)
 		return (-1);
 	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
 		i++;
-	if(!str[i])
+	if (!str[i])
 		return (-1);
 	return (i);
 }
 
-int get_size(char *str)
+int	get_size(char *str)
 {
 	int		i;
 	int		s;
@@ -37,33 +37,33 @@ int get_size(char *str)
 	tmp = trim_nl(get_next_line(fd));
 	s = 0;
 	i = 0;
-    while (tmp)
-    {
-		if(!s && check_map_start(tmp))
+	while (tmp)
+	{
+		if (!s && check_map_start(tmp))
 			s = 1;
-		if(!s && skip_spaces(tmp) >= 0)
-        		i++;
-		else if(s)
+		if (!s && skip_spaces(tmp) >= 0)
 			i++;
-        free(tmp);
-        tmp = trim_nl(get_next_line(fd));
+		else if (s)
+			i++;
+		free(tmp);
+		tmp = trim_nl(get_next_line(fd));
 	}
 	close(fd);
-	return (i);	
+	return (i);
 }
 
 char	*replace_spaces(char *tmp)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
-	if(!tmp)
+	if (!tmp)
 		return (NULL);
 	str = ft_strdup(tmp);
 	i = -1;
 	while (str[++i])
 	{
-		if(str[i] >= 9 && str[i] <= 13)
+		if (str[i] >= 9 && str[i] <= 13)
 			str[i] = ' ';
 	}
 	return (str);

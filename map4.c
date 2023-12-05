@@ -1,5 +1,5 @@
 /* ************************************************************************** */
-/*                                                                            */
+/*		                                                                      */
 /*                                                        :::      ::::::::   */
 /*   map4.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -14,13 +14,13 @@
 
 void	set_map_copy(t_check *check)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = -1;
+	i = -1;
 	free_matrix(check->copy);
-    check->copy = malloc(sizeof(char *) * (check->height + 3));
-    while((++i) < (check->height + 2))
+	check->copy = malloc(sizeof(char *) * (check->height + 3));
+	while ((++i) < (check->height + 2))
 	{
 		check->copy[i] = malloc(sizeof(char) * (check->width + 3));
 		j = -1;
@@ -30,7 +30,7 @@ void	set_map_copy(t_check *check)
 	}
 	check->copy[i] = NULL;
 	i = -1;
-	while(check->map[++i])
+	while (check->map[++i])
 	{
 		j = -1;
 		while (check->map[i][++j])
@@ -43,16 +43,16 @@ void	set_map_copy(t_check *check)
 int	check_map_block(t_check *check, int i, int j, int *t)
 {
 	if (check->copy[i][j] == ' ')
-		return(print_error(18, 1));
-	else if(check->copy[i][j] == '0')
+		return (print_error(18, 1));
+	else if (check->copy[i][j] == '0')
 	{
 		check->copy[i][j] = '3';
 		(*t)++;
 	}
-	else if(check->copy[i][j] != '1' && check->copy[i][j] != '2')
+	else if (check->copy[i][j] != '1' && check->copy[i][j] != '2')
 	{
 		if (check->copy[i][j] != '3')
-			return(print_error(15, 1));
+			return (print_error(15, 1));
 	}
 	return (0);
 }
@@ -61,11 +61,11 @@ int	check_map_borders_aux(t_check *check, int i, int j, int *t)
 {
 	if (check_map_block(check, i, j + 1, t))
 		return (1);
-	else if(check_map_block(check, i, j - 1, t))
+	else if (check_map_block(check, i, j - 1, t))
 		return (1);
-	else if(check_map_block(check, i + 1, j, t))
+	else if (check_map_block(check, i + 1, j, t))
 		return (1);
-	else if(check_map_block(check, i - 1, j, t))
+	else if (check_map_block(check, i - 1, j, t))
 		return (1);
 	check->copy[i][j] = '2';
 	(*t)--;
@@ -74,21 +74,11 @@ int	check_map_borders_aux(t_check *check, int i, int j, int *t)
 
 int	check_map_borders(t_check *check)
 {
-	int i;
-	int j;
-	int t;
+	int	i;
+	int	j;
+	int	t;
 
 	set_map_copy(check);
-	ft_printf("---------------------------------\n");
-		print_matrix_nl(check->var);
-	ft_printf("---------------------------------\n");
-		print_matrix_nl(check->map);
-		ft_printf("w=%i h=%i\n", check->width, check->height);
-	ft_printf("---------------------------------\n");
-		print_matrix_nl(check->copy);
-		ft_printf("x=%i y=%i c=%c\n", check->px, check->py, check->copy[check->px][check->py]);
-	ft_printf("---------------------------------\n");
-
 	check->copy[check->px][check->py] = '3';
 	t = 1;
 	if (check_map_borders_aux(check, check->px, check->py, &t))
@@ -107,7 +97,5 @@ int	check_map_borders(t_check *check)
 			}
 		}
 	}
-		print_matrix_nl(check->copy);
-	ft_printf("---------------------------------\n");
-	return(0);
+	return (check_map_outer_borders(check, 0, 0, 0));
 }
