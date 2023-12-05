@@ -17,6 +17,7 @@ OUT = cub3D
 SRCS = cub3d.c \
 		error.c \
 		hooks.c \
+		img.c \
 		map.c \
 		map2.c \
 		map3.c \

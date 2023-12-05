@@ -68,10 +68,11 @@ typedef struct s_cubed
 	t_img	east;
 	t_img	south;
 	t_img	west;
-	t_rgb	floor;
-	t_rgb	ceiling;
+	t_rgb	*floor;
+	t_rgb	*ceiling;
 	double	play_x;
 	double	play_y;
+	char	dir_s;
 	double	dir_x;
 	double	dir_y;
 	double	cam_x;
@@ -92,11 +93,15 @@ int		print_error(int i, int e);
 
 //hooks.c
 
+//img.c
+void	ft_destroy_imgs(t_cubed *cube);
+void	get_img(t_cubed *c, t_img *img, char *path);
+
 //map.c
 t_check	*init_check(char *arg);
 int		free_check(t_check *check);
-void	set_cubed(t_cubed **cube, t_check *check);
-int		get_map(t_cubed **cube, char *arg, int i, int fd);
+void	set_cubed(t_cubed *cube, t_check *check);
+int		get_map(t_cubed *cube, char *arg, int i, int fd);
 
 //map2.c
 void	init_var(t_check *check);

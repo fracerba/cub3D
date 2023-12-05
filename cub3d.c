@@ -34,17 +34,26 @@ int	ft_check_file(char *argv)
 
 void	free_all(t_cubed *cube)
 {
-	free(cube);
-	cube = NULL;
-	ft_printf("SIUM!\n");
+	free_matrix(cube->map);
+	ft_destroy_imgs(cube);
+	free(cube->floor);
+	free(cube->ceiling);
+	mlx_destroy_display(cube->mlx);
+	free(cube->mlx);
+}
+
+void	start_raycast(t_cubed *cube)
+{
+	print_matrix_nl(cube->map);
+	printf("h = %i w = %i\n", cube->map_height, cube->map_width);
+	printf("x = %f y = %f d = %c\n", cube->play_x, cube->play_y, cube->dir_s);
 }
 
 int	main(int argc, char **argv)
 {
 	int		fd;
-	t_cubed	*cube;
+	t_cubed	cube;
 
-	cube = NULL;
 	if (argc > 2)
 		return (print_error(1, 1));
 	else if (argc < 2)
@@ -56,8 +65,7 @@ int	main(int argc, char **argv)
 		return (print_error(3, 1));
 	close(fd);
 	if (!get_map(&cube, argv[1], 0, 0))
-		//start_raycast(cube);
-	ft_printf("daje!\n");
-	free_all(cube);
+		start_raycast(&cube);
+	free_all(&cube);
 	return (0);
 }
