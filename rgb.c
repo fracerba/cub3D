@@ -21,7 +21,7 @@ int	better_atoi(char *str)
 		return (i);
 	else
 	{
-		if (ft_strlen(str) == 1 && ft_strncmp(str, "0", 1))
+		if (ft_strlen(str) == 1 && !ft_strncmp(str, "0", 1))
 			return (0);
 		else
 			return (-1);

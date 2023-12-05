@@ -65,17 +65,17 @@ int	check_var_xpm(char *var, int n)
 	return (0);
 }
 
-int	check_var_values(t_check *check)
+int	check_var_values(t_check *c)
 {
 	int	i;
 
 	i = -1;
 	while ((++i) < 4)
 	{
-		if (check_var_xpm(check->var[i], i))
+		if (check_var_xpm(c->var[i], i))
 			return (1);
 	}
-	if (rgb_check(check->var[i], 0) || rgb_check(check->var[i], 1))
+	if (rgb_check(c->var[i], 0) || rgb_check(c->var[i + 1], 1))
 		return (1);
 	return (0);
 }

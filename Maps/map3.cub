@@ -1,14 +1,14 @@
 
-SO ./path_to_the_south_texture
+SO ./Textures/stone_bricks.xpm
 
-    WE   ./path_to_the_west_texture
-F 220,100,0
+    WE   ./Textures/red_bricks.xpm
+F 255,100,255
 
-EA      ./path_to_the_east_texture
+EA      ./Textures/eagle.xpm
 
-    NO ./path_to_the_north_texture
+    NO ./Textures/mossy_bricks.xpm
 
-C 225,30,0
+C 0,30,0
 
 111111111111111111111111111111
 100000000000000000000100000001

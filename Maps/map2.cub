@@ -1,13 +1,13 @@
 
-SO ./path_to_the_south_texture 
+SO ./Textures/purple.xpm
       
-    WE   ./path_to_the_west_texture
-C 225,30,0
+    WE   ./Textures/stone_wall.xpm
+C 0,50,225
 
-EA      ./path_to_the_east_texture
+EA      ./Textures/mossy_bricks.xpm
 
-    NO ./path_to_the_north_texture
-F 220,100,0
+    NO ./Textures/eagle.xpm
+F 100,220,0
 11111111111
 11000000001
 11000000111
