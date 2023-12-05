@@ -62,8 +62,8 @@ void	set_cubed(t_cubed *cube, t_check *check)
 	get_img(cube, &cube->east, check->var[1]);
 	get_img(cube, &cube->south, check->var[2]);
 	get_img(cube, &cube->west, check->var[3]);
-	cube->play_x = (double)(check->px - 1);
-	cube->play_y = (double)(check->py - 1);
+	cube->play_x = (double)(check->px) - 0.5;
+	cube->play_y = (double)(check->py) - 0.5;
 	cube->floor = rgb_assign(check->var[4]);
 	cube->ceiling = rgb_assign(check->var[5]);
 	cube->frames = 0;
