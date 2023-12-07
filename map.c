@@ -89,7 +89,7 @@ int	set_cubed(t_cubed *cube, t_check *check)
 	if (!cube->mlx)
 	{
 		free_check(check);
-		return(print_error(31, 1));
+		return (print_error(31, 1));
 	}
 	get_img(cube, &cube->north, check->var[0]);
 	get_img(cube, &cube->east, check->var[1]);

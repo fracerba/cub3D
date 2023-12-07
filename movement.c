@@ -14,22 +14,18 @@
 
 void	move_forward(t_cubed *cube, char **map, double x, double y)
 {
-	
 }
 
 void	move_backwards(t_cubed *cube, char **map, double x, double y)
 {
-	
 }
 
 void	move_left(t_cubed *cube, char **map, double x, double y)
 {
-	
 }
 
 void	move_right(t_cubed *cube, char **map, double x, double y)
 {
-	
 }
 
 int	ft_move(int key, t_cubed *cube)

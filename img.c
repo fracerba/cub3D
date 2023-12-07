@@ -29,4 +29,3 @@ void	get_img(t_cubed *c, t_img *img, char *path)
 	img->img = mlx_xpm_file_to_image(c->mlx, path, &img->lenght, &img->height);
 	img->path = mlx_get_data_addr(img->img, &img->bits, &img->line, &img->end);
 }
-
