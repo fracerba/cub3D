@@ -80,6 +80,8 @@ typedef struct s_cubed
 	double	dir_y;
 	double	cam_x;
 	double	cam_y;
+	double	m_speed;
+	double	r_speed;
 	//double	tngs[/*un botto fra!*/];
 	int		frames;
 }	t_cubed;
@@ -103,7 +105,6 @@ void	get_img(t_cubed *c, t_img *img, char *path);
 //map.c
 t_check	*init_check(char *arg);
 int		free_check(t_check *check);
-void	set_direction(t_cubed *cube);
 int		set_cubed(t_cubed *cube, t_check *check);
 int		get_map(t_cubed *cube, char *arg, int i, int fd);
 
@@ -148,6 +149,9 @@ void	move_right(t_cubed *cube, char **map, int x, int y);
 int		ft_move(int key, t_cubed *cube);
 
 //raycast1.c
+void	set_direction(t_cubed *cube);
+void	init_cubed(t_cubed *cube);
+int		frame_render(t_cubed *cube);
 void	start_raycast(t_cubed *cube);
 
 //raycast2.c

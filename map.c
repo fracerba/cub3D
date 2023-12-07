@@ -52,34 +52,6 @@ int	free_check(t_check *check)
 	return (1);
 }
 
-void	set_direction(t_cubed *cube)
-{
-	if (cube->dir_s == 'N')
-		cube->dir_x = -1;
-	else if (cube->dir_s == 'E' || cube->dir_s == 'W')
-		cube->dir_x = 0;
-	else if (cube->dir_s == 'S')
-		cube->dir_x = 1;
-	if (cube->dir_s == 'N' || cube->dir_s == 'S')
-		cube->dir_y = 0;
-	else if (cube->dir_s == 'E')
-		cube->dir_y = 1;
-	else if (cube->dir_s == 'W')
-		cube->dir_y = -1;
-	if (cube->dir_s == 'N' || cube->dir_s == 'S')
-		cube->cam_x = 0;
-	else if (cube->dir_s == 'E')
-		cube->cam_x = 0.6;
-	else if (cube->dir_s == 'W')
-		cube->cam_x = -0.6;
-	if (cube->dir_s == 'N')
-		cube->cam_y = 0.6;
-	else if (cube->dir_s == 'E' || cube->dir_s == 'W')
-		cube->cam_y = 0;
-	else if (cube->dir_s == 'S')
-		cube->cam_y = -0.6;
-}
-
 int	set_cubed(t_cubed *cube, t_check *check)
 {
 	cube->map = dup_matrix(check->map);
@@ -95,13 +67,11 @@ int	set_cubed(t_cubed *cube, t_check *check)
 	get_img(cube, &cube->east, check->var[1]);
 	get_img(cube, &cube->south, check->var[2]);
 	get_img(cube, &cube->west, check->var[3]);
-	cube->play_x = (double)(check->px) - 0.5;
-	cube->play_y = (double)(check->py) - 0.5;
 	cube->floor = rgb_assign(check->var[4]);
 	cube->ceiling = rgb_assign(check->var[5]);
+	cube->play_x = (double)(check->px) - 0.5;
+	cube->play_y = (double)(check->py) - 0.5;
 	cube->dir_s = check->map[check->px - 1][check->py - 1];
-	set_direction(cube);
-	cube->frames = 0;
 	free_check(check);
 	return (0);
 }

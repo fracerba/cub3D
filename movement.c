@@ -12,36 +12,36 @@
 
 #include "cub3d.h"
 
-void	move_forward(t_cubed *cube, char **map, int x, int y)
+void	move_forward(t_cubed *c, char **map, int x, int y)
 {
-	if(cube->map[x + (int)(cube->dir_x * speed)][y] != '1')
-		cube->play_x += cube->dir_x * speed;
-	if(cube->map[x][y + (int)(cube->dir_y * speed)] != '1')
-		cube->play_y += cube->dir_y * speed;
+	if(c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
+		c->play_x += c->dir_x * c->m_speed;
+	if(c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
+		c->play_y += c->dir_y * c->m_speed;
 }
 
-void	move_backwards(t_cubed *cube, char **map, int x, int y)
+void	move_backwards(t_cubed *c, char **map, int x, int y)
 {
-	if(cube->map[x - (int)(cube->dir_x * speed)][y] != '1')
-		cube->play_x -= cube->dir_x * speed;
-	if(cube->map[x][y - (int)(cube->dir_y * speed)] != '1')
-		cube->play_y -= cube->dir_y * speed;
+	if(c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
+		c->play_x -= c->dir_x * c->m_speed;
+	if(c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
+		c->play_y -= c->dir_y * c->m_speed;
 }
 
-void	move_left(t_cubed *cube, char **map, int x, int y)
+void	move_left(t_cubed *c, char **map, int x, int y)
 {
-	if(cube->map[x - (int)(cube->dir_x * speed)][y] != '1')
-		cube->play_x -= cube->dir_x * speed;
-	if(cube->map[x][y + (int)(cube->dir_y * speed)] != '1')
-		cube->play_y += cube->dir_y * speed;
+	if(c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
+		c->play_x -= c->dir_x * c->m_speed;
+	if(c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
+		c->play_y += c->dir_y * c->m_speed;
 }
 
-void	move_right(t_cubed *cube, char **map, int x, int y)
+void	move_right(t_cubed *c, char **map, int x, int y)
 {
-	if(cube->map[x + (int)(cube->dir_x * speed)][y] != '1')
-		cube->play_x += cube->dir_x * speed;
-	if(cube->map[x][y - (int)(cube->dir_y * speed)] != '1')
-		cube->play_y -= cube->dir_y * speed;
+	if(c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
+		c->play_x += c->dir_x * c->m_speed;
+	if(c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
+		c->play_y -= c->dir_y * c->m_speed;
 }
 
 int	ft_move(int key, t_cubed *c)
