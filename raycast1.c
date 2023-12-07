@@ -14,6 +14,7 @@
 
 int	frame_render(t_cubed *cube)
 {
+	
 }
 
 void	start_raycast(t_cubed *cube)
@@ -21,7 +22,7 @@ void	start_raycast(t_cubed *cube)
 	print_matrix_nl(cube->map);
 	printf("h = %i w = %i\n", cube->map_height, cube->map_width);
 	printf("x = %f y = %f d = %c\n", cube->play_x, cube->play_y, cube->dir_s);
-	cube->window = mlx_new_window(cube->mlx, 1920, 1080, "CUB3D");
+	cube->window = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!cube->window)
 	{
 		print_error(32, 1);

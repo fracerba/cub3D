@@ -13,6 +13,9 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define WIDTH 1920
+# define HEIGHT 1080
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -138,10 +141,10 @@ char	**check_dup_matrix(char **mat);
 int		free_matrix(char **mat);
 
 //movement.c
-void	move_forward(t_cubed *cube, char **map, double x, double y);
-void	move_backwards(t_cubed *cube, char **map, double x, double y);
-void	move_left(t_cubed *cube, char **map, double x, double y);
-void	move_right(t_cubed *cube, char **map, double x, double y);
+void	move_forward(t_cubed *cube, char **map, int x, int y);
+void	move_backwards(t_cubed *cube, char **map, int x, int y);
+void	move_left(t_cubed *cube, char **map, int x, int y);
+void	move_right(t_cubed *cube, char **map, int x, int y);
 int		ft_move(int key, t_cubed *cube);
 
 //raycast1.c

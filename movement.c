@@ -12,37 +12,53 @@
 
 #include "cub3d.h"
 
-void	move_forward(t_cubed *cube, char **map, double x, double y)
+void	move_forward(t_cubed *cube, char **map, int x, int y)
 {
+	if(cube->map[x + (int)(cube->dir_x * speed)][y] != '1')
+		cube->play_x += cube->dir_x * speed;
+	if(cube->map[x][y + (int)(cube->dir_y * speed)] != '1')
+		cube->play_y += cube->dir_y * speed;
 }
 
-void	move_backwards(t_cubed *cube, char **map, double x, double y)
+void	move_backwards(t_cubed *cube, char **map, int x, int y)
 {
+	if(cube->map[x - (int)(cube->dir_x * speed)][y] != '1')
+		cube->play_x -= cube->dir_x * speed;
+	if(cube->map[x][y - (int)(cube->dir_y * speed)] != '1')
+		cube->play_y -= cube->dir_y * speed;
 }
 
-void	move_left(t_cubed *cube, char **map, double x, double y)
+void	move_left(t_cubed *cube, char **map, int x, int y)
 {
+	if(cube->map[x - (int)(cube->dir_x * speed)][y] != '1')
+		cube->play_x -= cube->dir_x * speed;
+	if(cube->map[x][y + (int)(cube->dir_y * speed)] != '1')
+		cube->play_y += cube->dir_y * speed;
 }
 
-void	move_right(t_cubed *cube, char **map, double x, double y)
+void	move_right(t_cubed *cube, char **map, int x, int y)
 {
+	if(cube->map[x + (int)(cube->dir_x * speed)][y] != '1')
+		cube->play_x += cube->dir_x * speed;
+	if(cube->map[x][y - (int)(cube->dir_y * speed)] != '1')
+		cube->play_y -= cube->dir_y * speed;
 }
 
-int	ft_move(int key, t_cubed *cube)
+int	ft_move(int key, t_cubed *c)
 {
 	if (key == 65307)
-		free_all(cube);
+		free_all(c);
 	if (key == 100)
-		rotate_right(cube, cube->map, cube->play_x, cube->play_y);
+		rotate_right(c, c->map);
 	else if (key == 97)
-		rotate_left(cube, cube->map, cube->play_x, cube->play_y);
+		rotate_left(c, c->map);
 	if (key == 65363)
-		move_right(cube, cube->map, cube->play_x, cube->play_y);
+		move_right(c, c->map, (int)c->play_x, (int)c->play_y);
 	else if (key == 65361)
-		move_left(cube, cube->map, cube->play_x, cube->play_y);
+		move_left(c, c->map, (int)c->play_x, (int)c->play_y);
 	else if (key == 65364)
-		move_down(cube, cube->map, cube->play_x, cube->play_y);
+		move_down(c, c->map, (int)c->play_x, (int)c->play_y);
 	else if (key == 65362)
-		move_up(cube, cube->map, cube->play_x, cube->play_y);
+		move_up(c, c->map, (int)c->play_x, (int)c->play_y);
 	return (0);
 }
