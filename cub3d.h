@@ -83,7 +83,7 @@ typedef struct s_cubed
 
 //cub3d.c
 int		ft_check_file(char *argv);
-void	free_all(t_cubed *cube);
+int		free_all(t_cubed *cube);
 int		main(int argc, char **argv);
 
 //error.c
@@ -100,7 +100,8 @@ void	get_img(t_cubed *c, t_img *img, char *path);
 //map.c
 t_check	*init_check(char *arg);
 int		free_check(t_check *check);
-void	set_cubed(t_cubed *cube, t_check *check);
+void	set_direction(t_cubed *cube);
+int		set_cubed(t_cubed *cube, t_check *check);
 int		get_map(t_cubed *cube, char *arg, int i, int fd);
 
 //map2.c
@@ -135,6 +136,18 @@ char	**dup_matrix(char **mat);
 char	**check_dup_aux(char **mat, int i);
 char	**check_dup_matrix(char **mat);
 int		free_matrix(char **mat);
+
+//movement.c
+void	move_forward(t_cubed *cube, char **map, double x, double y);
+void	move_backwards(t_cubed *cube, char **map, double x, double y);
+void	move_left(t_cubed *cube, char **map, double x, double y);
+void	move_right(t_cubed *cube, char **map, double x, double y);
+int		ft_move(int key, t_cubed *cube);
+
+//raycast1.c
+void	start_raycast(t_cubed *cube);
+
+//raycast2.c
 
 //rgb.c
 int		better_atoi(char *str);

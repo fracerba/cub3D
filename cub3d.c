@@ -32,21 +32,23 @@ int	ft_check_file(char *argv)
 	return (1);
 }
 
-void	free_all(t_cubed *cube)
+int	free_all(t_cubed *cube)
 {
-	free_matrix(cube->map);
-	ft_destroy_imgs(cube);
-	free(cube->floor);
-	free(cube->ceiling);
-	mlx_destroy_display(cube->mlx);
-	free(cube->mlx);
-}
-
-void	start_raycast(t_cubed *cube)
-{
-	print_matrix_nl(cube->map);
-	printf("h = %i w = %i\n", cube->map_height, cube->map_width);
-	printf("x = %f y = %f d = %c\n", cube->play_x, cube->play_y, cube->dir_s);
+	if (cube->map)
+		free_matrix(cube->map);
+	if (cube->floor)
+		free(cube->floor);
+	if (cube->ceiling)
+		free(cube->ceiling);
+	if (cube->mlx)
+	{
+		ft_destroy_imgs(cube);
+		if (cube->window)
+			mlx_destroy_window(cube->mlx, cube->window);
+		mlx_destroy_display(cube->mlx);
+		free(cube->mlx);
+	}
+	exit(0);
 }
 
 int	main(int argc, char **argv)

@@ -32,6 +32,10 @@ void	print_error3(int i)
 		ft_printf("Error\nThe rgb values for F are invalid!\n");
 	else if (i == 30)
 		ft_printf("Error\nThe rgb values for C are invalid!\n");
+	else if (i == 31)
+		ft_printf("Error\nError while creating display!\n");
+	else if (i == 32)
+		ft_printf("Error\nError while creating window!\n");
 }
 
 void	print_error2(int i)

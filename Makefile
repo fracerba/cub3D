@@ -24,6 +24,8 @@ SRCS = cub3d.c \
 		map4.c \
 		map5.c \
 		matrix.c \
+		raycast1.c \
+		raycast2.c \
 		rgb.c \
 		utils.c \
 		utils2.c \
