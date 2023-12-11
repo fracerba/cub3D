@@ -51,9 +51,9 @@ int	rgb_check(char *str, int i)
 	return (0);
 }
 
-t_rgb	*rgb_assign(char *str)
+t_rgb	rgb_assign(char *str)
 {
-	t_rgb	*new;
+	t_rgb	new;
 	int		r;
 	int		g;
 	int		b;
@@ -64,11 +64,20 @@ t_rgb	*rgb_assign(char *str)
 	g = ft_atoi(tmp[1]);
 	b = ft_atoi(tmp[2]);
 	free_matrix(tmp);
-	new = malloc(sizeof(t_rgb));
-	if (!new)
-		return (NULL);
-	new->red = r;
-	new->green = g;
-	new->blue = b;
+	new.red = r;
+	new.green = g;
+	new.blue = b;
 	return (new);
+}
+
+int	rgb_convert(t_rgb r)
+{
+	int c;
+
+	c = 0;
+	c += r.red << 16;
+	c += r.green << 8;
+	c += r.blue;
+	ft_prinft("%i\n", c);
+	return (c);
 }

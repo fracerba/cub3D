@@ -36,10 +36,6 @@ int	free_all(t_cubed *cube)
 {
 	if (cube->map)
 		free_matrix(cube->map);
-	if (cube->floor)
-		free(cube->floor);
-	if (cube->ceiling)
-		free(cube->ceiling);
 	if (cube->mlx)
 	{
 		ft_destroy_imgs(cube);
@@ -67,7 +63,7 @@ int	main(int argc, char **argv)
 		return (print_error(3, 1));
 	close(fd);
 	if (!get_map(&cube, argv[1], 0, 0))
-		start_raycast(&cube);
+		start_rendering(&cube);
 	free_all(&cube);
 	return (0);
 }

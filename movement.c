@@ -12,53 +12,62 @@
 
 #include "cub3d.h"
 
-void	move_forward(t_cubed *c, char **map, int x, int y)
+void	rotate_right(t_cubed *c)
 {
-	if(c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
-		c->play_x += c->dir_x * c->m_speed;
-	if(c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
-		c->play_y += c->dir_y * c->m_speed;
+	double	old_dir;
+	double	old_plane;
+
+	old_dir = c->dir_x;
+	old_plane = c->cam_x;
+	c->dir_x = c->dir_x * c->tngs[2] - c->dir_y * c->tngs[0];
+	c->dir_y = old_dir * c->tngs[0] + c->dir_y * c->tngs[2];
+	c->cam_x = c->cam_x * c->tngs[2] - c->cam_y * c->tngs[0];
+	c->cam_y = old_plane * c->tngs[0] + c->cam_y * c->tngs[2];
 }
 
-void	move_backwards(t_cubed *c, char **map, int x, int y)
+void	rotate_left(t_cubed *c)
 {
-	if(c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
-		c->play_x -= c->dir_x * c->m_speed;
-	if(c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
-		c->play_y -= c->dir_y * c->m_speed;
+	double	old_dir;
+	double	old_plane;
+
+	old_dir = c->dir_x;
+	old_plane = c->cam_x;
+	c->dir_x = c->dir_x * c->tngs[3] - c->dir_y * c->tngs[1];
+	c->dir_y = old_dir * c->tngs[1] + c->dir_y * c->tngs[3];
+	c->cam_x = c->cam_x * c->tngs[3] - c->cam_y * c->tngs[1];
+	c->cam_y = old_plane * c->tngs[1] + c->cam_y * c->tngs[3];
 }
 
-void	move_left(t_cubed *c, char **map, int x, int y)
+int	check_keys(int key)
 {
-	if(c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
-		c->play_x -= c->dir_x * c->m_speed;
-	if(c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
-		c->play_y += c->dir_y * c->m_speed;
-}
-
-void	move_right(t_cubed *c, char **map, int x, int y)
-{
-	if(c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
-		c->play_x += c->dir_x * c->m_speed;
-	if(c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
-		c->play_y -= c->dir_y * c->m_speed;
+	if (key == 65363 || key == 65361)
+		return (1);
+	if (key == 97 || key == 100 || key == 115 || key == 119)
+		return (1);
+	return (0);
 }
 
 int	ft_move(int key, t_cubed *c)
 {
 	if (key == 65307)
 		free_all(c);
-	if (key == 100)
-		rotate_right(c, c->map);
-	else if (key == 97)
-		rotate_left(c, c->map);
+
+	if (!check_keys(key))
+		return (0);
+	else
+		mlx_destroy_image(c->mlx, c->screen.img);
 	if (key == 65363)
-		move_right(c, c->map, (int)c->play_x, (int)c->play_y);
+		rotate_right(c);
 	else if (key == 65361)
+		rotate_left(c);
+	if (key == 100)
+		move_right(c, c->map, (int)c->play_x, (int)c->play_y);
+	else if (key == 97)
 		move_left(c, c->map, (int)c->play_x, (int)c->play_y);
-	else if (key == 65364)
-		move_down(c, c->map, (int)c->play_x, (int)c->play_y);
-	else if (key == 65362)
-		move_up(c, c->map, (int)c->play_x, (int)c->play_y);
+	else if (key == 115)
+		move_backwards(c, c->map, (int)c->play_x, (int)c->play_y);
+	else if (key == 119)
+		move_forward(c, c->map, (int)c->play_x, (int)c->play_y);
+	frame_render(c);
 	return (0);
 }

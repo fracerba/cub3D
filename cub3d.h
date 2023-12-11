@@ -60,6 +60,34 @@ typedef struct s_check
 	int		n_start;
 }	t_check;
 
+typedef struct s_ray
+{
+	double	camera;
+	double	ray_x;
+	double	ray_y;
+	int		map_x;
+	int		map_y;
+	double	dist_x;
+	double	dist_y;
+	double	delta_x;
+	double	delta_y;
+	double	wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line;
+	int		pitch;
+	int		draw_end;
+	int		draw_start;
+	double	wall_pos;
+	int		text_n;
+	int		text_x;
+	int		text_y;
+	double	step;
+	double	text_pos;
+}	t_ray;
+
 typedef struct s_cubed
 {
 	void	*mlx;
@@ -71,8 +99,10 @@ typedef struct s_cubed
 	t_img	east;
 	t_img	south;
 	t_img	west;
-	t_rgb	*floor;
-	t_rgb	*ceiling;
+	t_rgb	floor;
+	t_rgb	ceiling;
+	int		int_f;
+	int		int_c;
 	double	play_x;
 	double	play_y;
 	char	dir_s;
@@ -82,8 +112,9 @@ typedef struct s_cubed
 	double	cam_y;
 	double	m_speed;
 	double	r_speed;
-	//double	tngs[/*un botto fra!*/];
+	double	tngs[4];
 	int		frames;
+	t_img	screen;
 }	t_cubed;
 
 //cub3d.c
@@ -142,24 +173,31 @@ char	**check_dup_matrix(char **mat);
 int		free_matrix(char **mat);
 
 //movement.c
+void	rotate_right(t_cubed *c);
+void	rotate_left(t_cubed *c);
+int		check_keys(int key);
+int		ft_move(int key, t_cubed *c);
+
+//movement2.c
 void	move_forward(t_cubed *cube, char **map, int x, int y);
 void	move_backwards(t_cubed *cube, char **map, int x, int y);
 void	move_left(t_cubed *cube, char **map, int x, int y);
 void	move_right(t_cubed *cube, char **map, int x, int y);
-int		ft_move(int key, t_cubed *cube);
 
 //raycast1.c
 void	set_direction(t_cubed *cube);
 void	init_cubed(t_cubed *cube);
 int		frame_render(t_cubed *cube);
-void	start_raycast(t_cubed *cube);
+void	start_rendering(t_cubed *cube);
 
 //raycast2.c
+void	start_raycast(t_cubed *cube);
 
 //rgb.c
 int		better_atoi(char *str);
 int		rgb_check(char *str, int i);
-t_rgb	*rgb_assign(char *str);
+t_rgb	rgb_assign(char *str);
+int		rgb_convert(t_rgb r);
 
 //utils.c
 int		skip_spaces(char *str);
