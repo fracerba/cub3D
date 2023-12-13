@@ -28,6 +28,7 @@ SRCS = cub3d.c \
 		movement2.c \
 		raycast1.c \
 		raycast2.c \
+		raycast3.c \
 		rgb.c \
 		utils.c \
 		utils2.c \

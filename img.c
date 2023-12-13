@@ -12,6 +12,16 @@
 
 #include "cub3d.h"
 
+int	get_color(t_ray *r, int x, int y)
+{
+
+}
+		
+void put_pixel_on_img(t_cubed *c, int x, int y, int color)
+{
+
+}
+
 void	ft_destroy_imgs(t_cubed *cube)
 {
 	if (cube->north.img)

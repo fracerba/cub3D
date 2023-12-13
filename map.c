@@ -29,7 +29,6 @@ t_check	*init_check(char *arg)
 	check->copy = malloc(sizeof(char *) * (i + 1));
 	check->n_var = 0;
 	check->map_start = 0;
-	check->valid = 0;
 	check->height = 0;
 	check->width = 0;
 	check->px = 0;

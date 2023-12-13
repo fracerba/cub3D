@@ -52,7 +52,7 @@ typedef struct s_check
 	char	**var;
 	int		n_var;
 	int		map_start;
-	int		valid;
+	// int		valid;
 	int		height;
 	int		width;
 	int		px;
@@ -77,15 +77,15 @@ typedef struct s_ray
 	int		hit;
 	int		side;
 	int		line;
-	int		pitch;
-	int		draw_end;
-	int		draw_start;
+	int		d_end;
+	int		d_start;
 	double	wall_pos;
-	int		text_n;
+	// int		text_n;
 	int		text_x;
 	int		text_y;
 	double	step;
 	double	text_pos;
+	t_img	img;
 }	t_ray;
 
 typedef struct s_cubed
@@ -191,7 +191,17 @@ int		frame_render(t_cubed *cube);
 void	start_rendering(t_cubed *cube);
 
 //raycast2.c
-void	start_raycast(t_cubed *cube);
+void	init_ray_aux(t_ray *r, t_cubed *c);
+void	init_ray(t_ray *r, t_cubed *c, int x);
+void	draw_floor(t_cubed *c);
+void	draw_ceiling(t_cubed *c);
+void	start_raycast(t_cubed *c);
+
+//raycast3.c
+void	render_distance(t_ray *r, t_cubed *c);
+void	get_texture(t_ray *r, t_cubed *c);
+void	render_line(t_ray *r, t_cubed *c);
+void	draw_line(t_ray *r, t_cubed *c, int x);
 
 //rgb.c
 int		better_atoi(char *str);

@@ -66,7 +66,7 @@ void	draw_floor(t_cubed *c)
 		y = 0;
 		while (y < WIDTH)
 		{
-			/* code */
+			put_pixel_on_img(c, x, y, c->int_f);
 			y++;
 		}
 	}
@@ -83,7 +83,7 @@ void	draw_ceiling(t_cubed *c)
 		y = 0;
 		while (y < WIDTH)
 		{
-			/* code */
+			put_pixel_on_img(c, x, y, c->int_c);
 			y++;
 		}
 	}
@@ -100,5 +100,8 @@ void	start_raycast(t_cubed *c)
 	while (++x < WIDTH)
 	{
 		init_ray(&r, c, x);
+		render_distance(&r, c);
+		render_line(&r, c);
+		draw_line(&r, c, x);
 	}
 }
