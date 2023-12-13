@@ -68,6 +68,7 @@ void	start_rendering(t_cubed *cube)
 	print_matrix_nl(cube->map);
 	printf("h = %i w = %i\n", cube->map_height, cube->map_width);
 	printf("x = %f y = %f d = %c\n", cube->play_x, cube->play_y, cube->dir_s);
+	init_cubed(cube);
 	cube->window = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!cube->window)
 	{

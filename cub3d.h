@@ -77,8 +77,8 @@ typedef struct s_ray
 	int		hit;
 	int		side;
 	int		line;
-	int		d_end;
 	int		d_start;
+	int		d_end;
 	double	wall_pos;
 	// int		text_n;
 	int		text_x;

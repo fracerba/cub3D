@@ -14,32 +14,32 @@
 
 void	move_forward(t_cubed *c, char **map, int x, int y)
 {
-	if(c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
+	if (c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
 		c->play_x += c->dir_x * c->m_speed;
-	if(c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
+	if (c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
 		c->play_y += c->dir_y * c->m_speed;
 }
 
 void	move_backwards(t_cubed *c, char **map, int x, int y)
 {
-	if(c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
+	if (c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
 		c->play_x -= c->dir_x * c->m_speed;
-	if(c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
+	if (c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
 		c->play_y -= c->dir_y * c->m_speed;
 }
 
 void	move_left(t_cubed *c, char **map, int x, int y)
 {
-	if(c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
+	if (c->map[x - (int)(c->dir_x * c->m_speed)][y] != '1')
 		c->play_x -= c->dir_x * c->m_speed;
-	if(c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
+	if (c->map[x][y + (int)(c->dir_y * c->m_speed)] != '1')
 		c->play_y += c->dir_y * c->m_speed;
 }
 
 void	move_right(t_cubed *c, char **map, int x, int y)
 {
-	if(c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
+	if (c->map[x + (int)(c->dir_x * c->m_speed)][y] != '1')
 		c->play_x += c->dir_x * c->m_speed;
-	if(c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
+	if (c->map[x][y - (int)(c->dir_y * c->m_speed)] != '1')
 		c->play_y -= c->dir_y * c->m_speed;
 }

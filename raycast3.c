@@ -69,7 +69,7 @@ void	render_line(t_ray *r, t_cubed *c)
 		r->wall_pos = c->play_x + r->wall_dist * r->ray_x; 
 	else          
 		r->wall_pos = c->play_y + r->wall_dist * r->ray_y;
-	r->wall_pos -= floor((r->wall_pos));
+	r->wall_pos -= floor(r->wall_pos);
 }
 
 void	draw_line(t_ray *r, t_cubed *c, int x)

@@ -78,6 +78,5 @@ int	rgb_convert(t_rgb r)
 	c += r.red << 16;
 	c += r.green << 8;
 	c += r.blue;
-	ft_prinft("%i\n", c);
 	return (c);
 }

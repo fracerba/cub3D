@@ -51,7 +51,6 @@ int	ft_move(int key, t_cubed *c)
 {
 	if (key == 65307)
 		free_all(c);
-
 	if (!check_keys(key))
 		return (0);
 	else
