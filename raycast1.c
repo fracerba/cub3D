@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scaiazzo <scaiazzo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:17:37 by fracerba          #+#    #+#             */
-/*   Updated: 2023/12/07 11:17:39 by fracerba         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:46:58 by scaiazzo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	frame_render(t_cubed *c)
 	c->screen.path = mlx_get_data_addr(c->screen.img, &c->screen.bits,
 		&c->screen.line, &c->screen.end);
 	start_raycast(c);
-	//draw_minimap(c);
+	draw_minimap(c);
 	mlx_put_image_to_window(c->mlx, c->window, c->screen.img, 0, 0);
 	return (0);
 }
