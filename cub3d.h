@@ -130,6 +130,8 @@ int		print_error(int i, int e);
 //hooks.c
 
 //img.c
+int		get_color(t_ray *r, int x, int y);	
+void	put_pixel_on_img(t_cubed *c, int x, int y, int color);
 void	ft_destroy_imgs(t_cubed *cube);
 void	get_img(t_cubed *c, t_img *img, char *path);
 
@@ -171,6 +173,8 @@ char	**dup_matrix(char **mat);
 char	**check_dup_aux(char **mat, int i);
 char	**check_dup_matrix(char **mat);
 int		free_matrix(char **mat);
+
+//minimap.c
 
 //movement.c
 void	rotate_right(t_cubed *c);

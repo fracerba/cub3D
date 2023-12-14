@@ -14,7 +14,7 @@
 
 void	init_ray_aux(t_ray *r, t_cubed *c)
 {
-	if(r->ray_x < 0)
+	if (r->ray_x < 0)
 	{
 		r->step_x = -1;
 		r->dist_x = (c->play_x - r->map_x) * r->delta_x;
@@ -24,7 +24,7 @@ void	init_ray_aux(t_ray *r, t_cubed *c)
 		r->step_x = 1;
 		r->dist_x = (r->map_x + 1.0 - c->play_x) * r->delta_x;
 	}
-	if(r->ray_y < 0)
+	if (r->ray_y < 0)
 	{
 		r->step_y = -1;
 		r->dist_y = (c->play_y - r->map_y) * r->delta_y;
@@ -57,7 +57,7 @@ void	init_ray(t_ray *r, t_cubed *c, int x)
 
 void	draw_floor(t_cubed *c)
 {
-	int x;
+	int	x;
 	int	y;
 
 	x = -1;
@@ -74,10 +74,10 @@ void	draw_floor(t_cubed *c)
 
 void	draw_ceiling(t_cubed *c)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	x = (HEIGHT / 2) -1;
+	x = (HEIGHT / 2) - 1;
 	while (++x < HEIGHT)
 	{
 		y = 0;

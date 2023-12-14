@@ -40,7 +40,7 @@ void	set_direction(t_cubed *cube)
 		cube->cam_y = -0.6;
 }
 
-void init_cubed(t_cubed *cube)
+void	init_cubed(t_cubed *cube)
 {
 	set_direction(cube);
 	cube->frames = 0;
@@ -57,7 +57,8 @@ void init_cubed(t_cubed *cube)
 int	frame_render(t_cubed *c)
 {
 	c->screen.img = mlx_new_image(c->mlx, WIDTH, HEIGHT);
-	mlx_get_data_addr(c->screen.img, c->screen.bits, c->screen.line, c->screen.end);
+	mlx_get_data_addr(c->screen.img, c->screen.bits,
+		c->screen.line, c->screen.end);
 	start_raycast(c);
 	mlx_put_image_to_window(c->mlx, c->window, c->screen.img, 0, 0);
 	return (0);
@@ -65,9 +66,6 @@ int	frame_render(t_cubed *c)
 
 void	start_rendering(t_cubed *cube)
 {
-	print_matrix_nl(cube->map);
-	printf("h = %i w = %i\n", cube->map_height, cube->map_width);
-	printf("x = %f y = %f d = %c\n", cube->play_x, cube->play_y, cube->dir_s);
 	init_cubed(cube);
 	cube->window = mlx_new_window(cube->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!cube->window)

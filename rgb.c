@@ -72,7 +72,7 @@ t_rgb	rgb_assign(char *str)
 
 int	rgb_convert(t_rgb r)
 {
-	int c;
+	int	c;
 
 	c = 0;
 	c += r.red << 16;

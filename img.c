@@ -16,8 +16,8 @@ int	get_color(t_ray *r, int x, int y)
 {
 
 }
-		
-void put_pixel_on_img(t_cubed *c, int x, int y, int color)
+
+void	put_pixel_on_img(t_cubed *c, int x, int y, int color)
 {
 
 }
