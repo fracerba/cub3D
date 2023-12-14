@@ -181,10 +181,10 @@ int		check_keys(int key);
 int		ft_move(int key, t_cubed *c);
 
 //movement2.c
-void	move_forward(t_cubed *cube, char **map, int x, int y);
-void	move_backwards(t_cubed *cube, char **map, int x, int y);
-void	move_left(t_cubed *cube, char **map, int x, int y);
-void	move_right(t_cubed *cube, char **map, int x, int y);
+void	move_forward(t_cubed *cube, char **map, double x, double y);
+void	move_backwards(t_cubed *cube, char **map, double x, double y);
+void	move_left(t_cubed *cube, char **map, double x, double y);
+void	move_right(t_cubed *cube, char **map, double x, double y);
 
 //raycast1.c
 void	set_direction(t_cubed *cube);

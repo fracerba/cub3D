@@ -48,6 +48,8 @@ void	ft_destroy_imgs(t_cubed *cube)
 		mlx_destroy_image(cube->mlx, cube->east.img);
 	if (cube->west.img)
 		mlx_destroy_image(cube->mlx, cube->west.img);
+	if (cube->screen.img)
+		mlx_destroy_image(cube->mlx, cube->screen.img);
 }
 
 void	get_img(t_cubed *c, t_img *img, char *path)

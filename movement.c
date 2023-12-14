@@ -53,20 +53,19 @@ int	ft_move(int key, t_cubed *c)
 		free_all(c);
 	if (!check_keys(key))
 		return (0);
-	else
-		mlx_destroy_image(c->mlx, c->screen.img);
-	if (key == 65363)
+	mlx_destroy_image(c->mlx, c->screen.img);
+	if (key == 65361)
 		rotate_right(c);
-	else if (key == 65361)
+	else if (key == 65363)
 		rotate_left(c);
 	if (key == 100)
-		move_right(c, c->map, (int)c->play_x, (int)c->play_y);
+		move_right(c, c->map, c->play_x, c->play_y);
 	else if (key == 97)
-		move_left(c, c->map, (int)c->play_x, (int)c->play_y);
+		move_left(c, c->map, c->play_x, c->play_y);
 	else if (key == 115)
-		move_backwards(c, c->map, (int)c->play_x, (int)c->play_y);
+		move_backwards(c, c->map, c->play_x, c->play_y);
 	else if (key == 119)
-		move_forward(c, c->map, (int)c->play_x, (int)c->play_y);
+		move_forward(c, c->map, c->play_x, c->play_y);
 	frame_render(c);
 	return (0);
 }

@@ -44,7 +44,7 @@ void	init_cubed(t_cubed *cube)
 {
 	set_direction(cube);
 	cube->frames = 0;
-	cube->r_speed = 0.7;
+	cube->r_speed = 0.2;
 	cube->m_speed = 0.1;
 	cube->tngs[0] = sin(cube->r_speed);
 	cube->tngs[1] = sin(-(cube->r_speed));
@@ -75,7 +75,7 @@ void	start_rendering(t_cubed *cube)
 		free_all(cube);
 	}
 	frame_render(cube);
-	mlx_hook(cube->window, 3, 1L << 1, ft_move, &cube);
-	mlx_hook(cube->window, 17, 0, free_all, &cube);
+	mlx_hook(cube->window, 3, 1L << 1, ft_move, cube);
+	mlx_hook(cube->window, 17, 0, free_all, cube);
 	mlx_loop(cube->mlx);
 }
