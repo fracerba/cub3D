@@ -49,9 +49,9 @@ void	get_texture(t_ray *r, t_cubed *c)
 	else if (r->side == 1)
 	{
 		if (r->step_y == 1)
-			r->img = c->east;
-		else
 			r->img = c->west;
+		else
+			r->img = c->east;
 	}
 }
 

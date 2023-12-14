@@ -13,8 +13,8 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 720
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -52,7 +52,6 @@ typedef struct s_check
 	char	**var;
 	int		n_var;
 	int		map_start;
-	// int		valid;
 	int		height;
 	int		width;
 	int		px;
@@ -80,7 +79,6 @@ typedef struct s_ray
 	int		d_start;
 	int		d_end;
 	double	wall_pos;
-	// int		text_n;
 	int		text_x;
 	int		text_y;
 	double	step;
@@ -197,8 +195,8 @@ void	start_rendering(t_cubed *cube);
 //raycast2.c
 void	init_ray_aux(t_ray *r, t_cubed *c);
 void	init_ray(t_ray *r, t_cubed *c, int x);
-void	draw_floor(t_cubed *c);
 void	draw_ceiling(t_cubed *c);
+void	draw_floor(t_cubed *c);
 void	start_raycast(t_cubed *c);
 
 //raycast3.c

@@ -44,32 +44,15 @@ void	init_ray(t_ray *r, t_cubed *c, int x)
 	r->map_x = (int)c->play_x;
 	r->map_y = (int)c->play_y;
 	if (r->ray_x)
-		r->delta_x = abs(1 / r->ray_x);
+		r->delta_x = fabs(1 / r->ray_x);
 	else
 		r->delta_x = 1e30;
 	if (r->ray_y)
-		r->delta_y = abs(1 / r->ray_y);
+		r->delta_y = fabs(1 / r->ray_y);
 	else
 		r->delta_y = 1e30;
 	r->hit = 0;
 	init_ray_aux(r, c);
-}
-
-void	draw_floor(t_cubed *c)
-{
-	int	x;
-	int	y;
-
-	x = -1;
-	while (++x < (HEIGHT / 2))
-	{
-		y = 0;
-		while (y < WIDTH)
-		{
-			put_pixel_on_img(c, x, y, c->int_f);
-			y++;
-		}
-	}
 }
 
 void	draw_ceiling(t_cubed *c)
@@ -77,14 +60,31 @@ void	draw_ceiling(t_cubed *c)
 	int	x;
 	int	y;
 
-	x = (HEIGHT / 2) - 1;
-	while (++x < HEIGHT)
+	y = -1;
+	while (++y < (HEIGHT / 2))
 	{
-		y = 0;
-		while (y < WIDTH)
+		x = 0;
+		while (x < WIDTH)
 		{
 			put_pixel_on_img(c, x, y, c->int_c);
-			y++;
+			x++;
+		}
+	}
+}
+
+void	draw_floor(t_cubed *c)
+{
+	int	x;
+	int	y;
+
+	y = (HEIGHT / 2) - 1;
+	while (++y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			put_pixel_on_img(c, x, y, c->int_f);
+			x++;
 		}
 	}
 }
@@ -95,8 +95,8 @@ void	start_raycast(t_cubed *c)
 	t_ray	r;
 
 	x = -1;
-	draw_floor(c);
 	draw_ceiling(c);
+	draw_floor(c);
 	while (++x < WIDTH)
 	{
 		init_ray(&r, c, x);

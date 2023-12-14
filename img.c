@@ -14,12 +14,28 @@
 
 int	get_color(t_ray *r, int x, int y)
 {
+	int		color;
+	char	*path;
 
+	if (x < 0 || x >= r->img.lenght)
+		return (0);
+	else if (y < 0 || y >= r->img.lenght)
+		return (0);
+	y *= r->img.line;
+	x *= (r->img.bits / 8);
+	path = &r->img.path[y + x];
+	color = *(unsigned int *)path;
+	return (color);
 }
 
 void	put_pixel_on_img(t_cubed *c, int x, int y, int color)
 {
+	char	*i;
 
+	y *= c->screen.line;
+	x *= (c->screen.bits / 8);
+	i = &c->screen.path[y + x];
+	*(unsigned int *)i = color;
 }
 
 void	ft_destroy_imgs(t_cubed *cube)

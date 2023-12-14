@@ -57,9 +57,10 @@ void	init_cubed(t_cubed *cube)
 int	frame_render(t_cubed *c)
 {
 	c->screen.img = mlx_new_image(c->mlx, WIDTH, HEIGHT);
-	mlx_get_data_addr(c->screen.img, c->screen.bits,
-		c->screen.line, c->screen.end);
+	c->screen.path = mlx_get_data_addr(c->screen.img, &c->screen.bits,
+		&c->screen.line, &c->screen.end);
 	start_raycast(c);
+	//draw_minimap(c);
 	mlx_put_image_to_window(c->mlx, c->window, c->screen.img, 0, 0);
 	return (0);
 }
