@@ -111,7 +111,9 @@ typedef struct s_cubed
 	double	m_speed;
 	double	r_speed;
 	double	tngs[4];
-	int		frames;
+	double	m_tngs[4];
+	double	f_tngs[4];
+	int		old_mouse;
 	t_img	screen;
 }	t_cubed;
 
@@ -126,6 +128,11 @@ void	print_error2(int i);
 int		print_error(int i, int e);
 
 //hooks.c
+void	mouse_fast_right(t_cubed *c);
+void	mouse_fast_left(t_cubed *c);
+void	mouse_slow_right(t_cubed *c);
+void	mouse_slow_left(t_cubed *c);
+int		mouse_move(int x, int y, t_cubed *c);
 
 //img.c
 int		get_color(t_ray *r, int x, int y);	

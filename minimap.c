@@ -14,34 +14,34 @@
 
 void	make_minimap(t_cubed *c, int x, int y, int color)
 {
-	int	sizeX;
-	int	sizeY;
+	int	size_x;
+	int	size_y;
 
-	sizeY = 0;
-	while (sizeY < 5)
+	size_y = 0;
+	while (size_y < 5)
 	{
-		sizeX = 0;
-		if (y + sizeY > HEIGHT)
+		size_x = 0;
+		if (y + size_y > HEIGHT)
 			break ;
-		while (sizeX < 5)
+		while (size_x < 5)
 		{
-			if (x + sizeX > WIDTH)
+			if (x + size_x > WIDTH)
 				break ;
-			put_pixel_on_img(c, x + sizeX, y + sizeY, color);
-			sizeX++;
+			put_pixel_on_img(c, x + size_x, y + size_y, color);
+			size_x++;
 		}
-		sizeY++;
+		size_y++;
 	}
 }
 
 void	mini_player(t_cubed *c, double x, double y)
 {
-	int	sizeX;
-	int	sizeY;
+	int	size_x;
+	int	size_y;
 
-	sizeX = (int)(x * 5 - 2);
-	sizeY = (int)(y * 5 - 2);
-	make_minimap(c, sizeX, sizeY, 65280);
+	size_x = (int)(x * 5 - 2);
+	size_y = (int)(y * 5 - 2);
+	make_minimap(c, size_x, size_y, 65280);
 }
 
 void	draw_minimap(t_cubed *c)

@@ -55,8 +55,8 @@ int	set_cubed(t_cubed *cube, t_check *check)
 {
 	cube->map_height = check->height;
 	cube->map_width = check->width;
-	cube->play_x = (double)(check->px) - 0.5;
-	cube->play_y = (double)(check->py) - 0.5;
+	cube->play_x = (double)(check->px) - 0.501;
+	cube->play_y = (double)(check->py) - 0.501;
 	cube->dir_s = check->map[check->px - 1][check->py - 1];
 	check->map[check->px - 1][check->py - 1] = '0';
 	cube->map = dup_matrix(check->map);
