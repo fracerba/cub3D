@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   raycast3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <scaiazzo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:27:16 by fracerba          #+#    #+#             */
 /*   Updated: 2023/12/14 17:10:32 by scaiazzo         ###   ########.fr       */

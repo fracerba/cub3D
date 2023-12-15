@@ -53,9 +53,13 @@ int	free_check(t_check *check)
 
 int	set_cubed(t_cubed *cube, t_check *check)
 {
-	cube->map = dup_matrix(check->map);
 	cube->map_height = check->height;
 	cube->map_width = check->width;
+	cube->play_x = (double)(check->px) - 0.5;
+	cube->play_y = (double)(check->py) - 0.5;
+	cube->dir_s = check->map[check->px - 1][check->py - 1];
+	check->map[check->px - 1][check->py - 1] = '0';
+	cube->map = dup_matrix(check->map);
 	cube->mlx = mlx_init();
 	if (!cube->mlx)
 	{
@@ -68,9 +72,6 @@ int	set_cubed(t_cubed *cube, t_check *check)
 	get_img(cube, &cube->west, check->var[3]);
 	cube->floor = rgb_assign(check->var[4]);
 	cube->ceiling = rgb_assign(check->var[5]);
-	cube->play_x = (double)(check->px) - 0.5;
-	cube->play_y = (double)(check->py) - 0.5;
-	cube->dir_s = check->map[check->px - 1][check->py - 1];
 	free_check(check);
 	return (0);
 }

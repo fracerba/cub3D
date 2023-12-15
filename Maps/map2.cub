@@ -2,14 +2,14 @@
 SO ./Textures/purple.xpm
       
     WE   ./Textures/stone_wall.xpm
-C 0,50,225
+C 0,40,0
 
 EA      ./Textures/mossy_bricks.xpm
 
     NO ./Textures/eagle.xpm
-F 100,220,0
+F 205,0,205
 11111111111
 11000000001
 11000000111
-100011000E1
+100011000W1
 11111111111

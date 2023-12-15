@@ -2,13 +2,13 @@
 SO ./Textures/stone_bricks.xpm
 
     WE   ./Textures/red_bricks.xpm
-F 205,0,205
+F 100,220,0
 
 EA      ./Textures/eagle.xpm
 
     NO ./Textures/mossy_bricks.xpm
 
-C 0,40,0
+C  0,50,225
 
 111111111111111111111111111111
 100000000000000000000100000001

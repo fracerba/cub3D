@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <scaiazzo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:45:55 by fracerba          #+#    #+#             */
 /*   Updated: 2023/12/14 17:09:36 by scaiazzo         ###   ########.fr       */

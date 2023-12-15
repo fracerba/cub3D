@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   raycast1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <scaiazzo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:17:37 by fracerba          #+#    #+#             */
 /*   Updated: 2023/12/14 16:46:58 by scaiazzo         ###   ########.fr       */
@@ -29,22 +29,22 @@ void	set_direction(t_cubed *cube)
 	if (cube->dir_s == 'N' || cube->dir_s == 'S')
 		cube->cam_x = 0;
 	else if (cube->dir_s == 'E')
-		cube->cam_x = 0.6;
+		cube->cam_x = 0.66;
 	else if (cube->dir_s == 'W')
-		cube->cam_x = -0.6;
+		cube->cam_x = -0.66;
 	if (cube->dir_s == 'N')
-		cube->cam_y = 0.6;
+		cube->cam_y = 0.66;
 	else if (cube->dir_s == 'E' || cube->dir_s == 'W')
 		cube->cam_y = 0;
 	else if (cube->dir_s == 'S')
-		cube->cam_y = -0.6;
+		cube->cam_y = -0.66;
 }
 
 void	init_cubed(t_cubed *cube)
 {
 	set_direction(cube);
 	cube->frames = 0;
-	cube->r_speed = 0.2;
+	cube->r_speed = 0.1;
 	cube->m_speed = 0.1;
 	cube->tngs[0] = sin(cube->r_speed);
 	cube->tngs[1] = sin(-(cube->r_speed));
@@ -75,7 +75,7 @@ void	start_rendering(t_cubed *cube)
 		free_all(cube);
 	}
 	frame_render(cube);
-	mlx_hook(cube->window, 3, 1L << 1, ft_move, cube);
+	mlx_hook(cube->window, 2, 1L << 0, ft_move, cube);
 	mlx_hook(cube->window, 17, 0, free_all, cube);
 	mlx_loop(cube->mlx);
 }

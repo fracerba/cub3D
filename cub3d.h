@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scaiazzo <scaiazzo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fracerba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:06:17 by fracerba          #+#    #+#             */
-/*   Updated: 2023/12/14 17:10:32 by scaiazzo         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:06:19 by fracerba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1600
+# define HEIGHT 900
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -173,6 +173,8 @@ char	**check_dup_matrix(char **mat);
 int		free_matrix(char **mat);
 
 //minimap.c
+void	make_minimap(t_cubed *c, int x, int y, int color);
+void	mini_player(t_cubed *c, double x, double y);
 void	draw_minimap(t_cubed *c);
 
 //movement.c
