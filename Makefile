@@ -47,6 +47,8 @@ LINKS = -Lminilibx-linux -L/usr/lib -Iminilibx-linux -lmlx -lXext -lX11 -lm -lz
 LIBFT = libft
 
 LIBFTNAME = libft.a
+
+MINI = ./minilibx-linux
 	
 %.o: %.c
 	${CC} ${FLAGS} -I/usr/include -Iminilibx-linux -O3 -c $< -o $@
@@ -54,6 +56,7 @@ LIBFTNAME = libft.a
 $(NAME): ${OBJS}
 	make all -C ${LIBFT}
 	mv ${LIBFT}/${LIBFTNAME} ${NAME}
+	make -C ${MINI}
 	${CC} ${FLAGS} ${OBJS} ${NAME} ${LINKS} -o ${OUT}
 
 all: ${NAME}
@@ -66,6 +69,7 @@ bonus:	${OBJS}
 clean: 
 	${RM} ${OBJS}
 	make clean -C ${LIBFT}
+	make clean -C ${MINI}
 
 fclean: clean 
 	${RM} ${NAME}

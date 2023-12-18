@@ -62,6 +62,9 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		return (print_error(3, 1));
 	close(fd);
+	cube.map = NULL;
+	cube.mlx = NULL;
+	cube.window = NULL;
 	if (!get_map(&cube, argv[1], 0, 0))
 		start_rendering(&cube);
 	free_all(&cube);
